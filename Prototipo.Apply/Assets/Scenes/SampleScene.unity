@@ -1899,7 +1899,7 @@ MonoBehaviour:
   panelDialogo: {fileID: 824117848}
   textoDialogo: {fileID: 2040485080}
   imagenAvatar: {fileID: 1972864068}
-  avatarInicial: {fileID: -977893501, guid: dfafbc13f13ded447af48ad7a27af75e, type: 3}
+  avatarInicial: {fileID: 256903785, guid: 59868b40dc0e3734abcf7c55ae03d645, type: 3}
   mensajeInicio: "Coloc\xE1 los objetos en sus respectivos lugares para ganar"
   duracionMensaje: 5
 --- !u!4 &847486711
@@ -4562,7 +4562,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4779,12 +4779,12 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -1312321208, guid: a0122c27d19d77b4084b05a79f2126e5, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -785432535, guid: a0122c27d19d77b4084b05a79f2126e5, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 47161154, guid: a0122c27d19d77b4084b05a79f2126e5, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 47161154, guid: a0122c27d19d77b4084b05a79f2126e5, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -785432535, guid: a0122c27d19d77b4084b05a79f2126e5, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -265412369, guid: a0122c27d19d77b4084b05a79f2126e5, type: 3}
   - m_RefCount: 12
@@ -5343,7 +5343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.8549239, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
