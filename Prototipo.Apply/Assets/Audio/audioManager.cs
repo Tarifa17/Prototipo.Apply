@@ -14,11 +14,8 @@ public class AudioManager : MonoBehaviour
     [Header("Music")]
     [SerializeField] private AudioClip backgroundMusic;
 
-    private AudioSource sfxSource;
-    private AudioSource musicSource;
-
-    private bool isErrorSoundPlaying = false; // Control para evitar múltiples reproducciones del errorSound
-    private float errorSoundCooldown = 1f; // Tiempo mínimo entre reproducciones del errorSound (en segundos)
+    private AudioSource sfxSource; // Fuente de efectos de sonido
+    private AudioSource musicSource; // Fuente de música
 
     private void Awake()
     {
@@ -37,32 +34,22 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // Evitar duplicados
         }
     }
 
     public void PlayGrabSound()
     {
-        sfxSource.PlayOneShot(grabSound);
+        sfxSource.PlayOneShot(grabSound); // Reproducir sonido de agarrar
     }
 
     public void PlayDropSound()
     {
-        sfxSource.PlayOneShot(dropSound);
+        sfxSource.PlayOneShot(dropSound); // Reproducir sonido de soltar
     }
 
     public void PlayErrorSound()
     {
-        if (!isErrorSoundPlaying) // Solo reproducir si no se está reproduciendo ya
-        {
-            sfxSource.PlayOneShot(errorSound);
-            isErrorSoundPlaying = true;
-            Invoke(nameof(ResetErrorSound), errorSoundCooldown); // Restablecer después del cooldown
-        }
-    }
-
-    private void ResetErrorSound()
-    {
-        isErrorSoundPlaying = false;
+        sfxSource.PlayOneShot(errorSound); // Reproducir sonido de error
     }
 }

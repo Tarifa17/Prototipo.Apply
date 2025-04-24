@@ -4,25 +4,35 @@ using UnityEngine;
 
 public class Contenedores : MonoBehaviour
 {
-    [SerializeField] private TipoTarea tipo; //Variable para el tipo de tarea
-    private GameObject objetoActual = null; //Marcamos el objeto actual como nulo
-    private GameManager gameManager; //Variable para el GameManager
+    [SerializeField] private TipoTarea tipo; // Tipo de tarea aceptado por el contenedor
+    private GameObject objetoActual = null; // Objeto actualmente dentro del contenedor
+    private GameManager gameManager; // Referencia al GameManager
 
     private void Start()
     {
-        gameManager = FindObjectOfType<GameManager>(); //Buscamos elgamemanager
+        gameManager = FindObjectOfType<GameManager>(); // Buscar el GameManager en la escena
     }
 
-    private void OnTriggerEnter2D(Collider2D other) //Detectamos cuando un objeto entra en contacto con el contenedor 
+    private void OnTriggerEnter2D(Collider2D other) // Detectar colisión de objetos
     {
-        ObjetosEnum objeto = other.GetComponent<ObjetosEnum>(); //
-        if (objeto != null && objeto.Tipo == tipo && objetoActual == null) // Si es del tipo correcto y aún no hay otro objeto dentro
+        ObjetosEnum objeto = other.GetComponent<ObjetosEnum>();
+
+        if (objeto != null)
         {
-            objetoActual = other.gameObject;
-            gameManager.RegistrarTarea(this);
+            if (objeto.Tipo == tipo && objetoActual == null) // Objeto correcto
+            {
+                objetoActual = other.gameObject;
+                gameManager.RegistrarTarea(this);
+            }
+            else if (objeto.Tipo != tipo) // Objeto incorrecto
+            {
+                // Reproducir sonido de error
+                AudioManager.Instancia.PlayErrorSound();
+            }
         }
     }
-    private void OnTriggerExit2D(Collider2D other)
+
+    private void OnTriggerExit2D(Collider2D other) // Detectar salida de objetos
     {
         if (other.gameObject == objetoActual)
         {

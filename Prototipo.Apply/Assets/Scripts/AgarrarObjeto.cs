@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AgarrarObjeto : MonoBehaviour
 {
-    [SerializeField] private GameObject puntoAgarre; //Variable para el punto de agarre del objeto
-    private GameObject objetoAgarrado = null; //Al inicio no hay ningun objeto agarrado
-    private GameManager gameManager; //Variable para el gamemanager
+    [SerializeField] private GameObject puntoAgarre; // Punto de agarre del objeto
+    private GameObject objetoAgarrado = null; // Objeto actualmente agarrado
+    private GameManager gameManager; // Referencia al GameManager
 
     private void Start()
     {
@@ -15,41 +15,47 @@ public class AgarrarObjeto : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.JuegoGanado) return; //Si el juego fue ganado se detiene la logica
+        if (gameManager.JuegoGanado) return; // Si el juego fue ganado, detiene la lógica
 
-        if (objetoAgarrado != null) //Si un objeto esta agarrado
+        if (objetoAgarrado != null)
         {
-            if (Input.GetKey("q")) //Apretar Q
+            if (Input.GetKey("q")) // Soltar el objeto al presionar "Q"
             {
-                Rigidbody2D rb = objetoAgarrado.GetComponent<Rigidbody2D>(); //Asignamos el objeto con su rigidbody
+                Rigidbody2D rb = objetoAgarrado.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
-                    rb.isKinematic = false; //Lo dejamos de hacer kinematico
+                    rb.isKinematic = false; // Deja de ser kinemático
                 }
 
-                objetoAgarrado.transform.SetParent(null); //Quitamo el objeto de la mano del jugador
+                objetoAgarrado.transform.SetParent(null); // Quitar el objeto del punto de agarre
                 objetoAgarrado = null;
+
+                // Reproducir sonido de soltar
+                AudioManager.Instancia.PlayDropSound();
             }
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (gameManager.JuegoGanado) return; //Si el juego fue ganado detiene la logica
+        if (gameManager.JuegoGanado) return; // Si el juego fue ganado, detiene la lógica
 
-        if (other.gameObject.CompareTag("Objetos")) //Busca el el objeto asociado al tag 
+        if (other.gameObject.CompareTag("Objetos")) // Detecta objetos con el tag "Objetos"
         {
-            if (Input.GetKey("e") && objetoAgarrado == null) //Al apretar E y si no hay objeto agarrado
+            if (Input.GetKey("e") && objetoAgarrado == null) // Agarrar el objeto al presionar "E"
             {
-                Rigidbody2D rb = other.GetComponent<Rigidbody2D>(); //Asignamos el objeto con su rigidbody
+                Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
-                    rb.isKinematic = true; //El objeto se vuelve kinematico
+                    rb.isKinematic = true; // Hacer el objeto kinemático
                 }
 
-                other.transform.position = puntoAgarre.transform.position; //El objeto toma la posicion del punto de agarre
-                other.transform.SetParent(puntoAgarre.transform); //El objeto se vuelve hijo del punto de agarre
-                objetoAgarrado = other.gameObject; //Guardamos el objeto agarrado en una variable
+                other.transform.position = puntoAgarre.transform.position; // Mover al punto de agarre
+                other.transform.SetParent(puntoAgarre.transform); // Hacer hijo del punto de agarre
+                objetoAgarrado = other.gameObject; // Guardar el objeto como agarrado
+
+                // Reproducir sonido de agarrar
+                AudioManager.Instancia.PlayGrabSound();
             }
         }
     }
