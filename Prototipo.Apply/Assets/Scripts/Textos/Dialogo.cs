@@ -14,7 +14,10 @@ public class DialogoUI : MonoBehaviour
     [TextArea(2, 4)] //Area del texto
     [SerializeField] private string mensajeInicio = "Aqui va el texto."; //Mensaje q se muestra
 
+
     [SerializeField] private float duracionMensaje = 10f; //Duracion del mensaje
+    [SerializeField] private AudioClip audioMensajeInicio;
+
 
     private void Start()
     {
