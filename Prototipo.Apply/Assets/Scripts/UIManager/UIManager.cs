@@ -20,8 +20,21 @@ public class UIManager : MonoBehaviour
 
     public void ActualizarEstrellas(int cantidad)
     {
-        for (int i = 0; i < estrellas.Length; i++) //Agrega estrellas mientras la variable sea menor a la lista
+        // Verifica que las referencias no se hayan destruido
+        if (estrellas == null || estrellas.Length == 0)
         {
+            Debug.LogWarning("No hay estrellas asignadas o se han destruido.");
+            return;
+        }
+
+        for (int i = 0; i < estrellas.Length; i++)
+        {
+            if (estrellas[i] == null)
+            {
+                Debug.LogWarning($"Estrella en posición {i} se ha destruido.");
+                continue;
+            }
+
             estrellas[i].enabled = i < cantidad;
         }
     }

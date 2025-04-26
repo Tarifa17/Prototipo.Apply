@@ -15,7 +15,7 @@ public class AgarrarObjeto : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.JuegoGanado) return; // Si el juego fue ganado, detiene la lógica
+        if (gameManager.JuegoGanado) return; // Si el juego fue ganado, detiene la lï¿½gica
 
         if (objetoAgarrado != null)
         {
@@ -24,7 +24,7 @@ public class AgarrarObjeto : MonoBehaviour
                 Rigidbody2D rb = objetoAgarrado.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
-                    rb.isKinematic = false; // Deja de ser kinemático
+                    rb.isKinematic = false; // Deja de ser kinemï¿½tico
                 }
 
                 objetoAgarrado.transform.SetParent(null); // Quitar el objeto del punto de agarre
@@ -38,7 +38,7 @@ public class AgarrarObjeto : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (gameManager.JuegoGanado) return; // Si el juego fue ganado, detiene la lógica
+        if (gameManager.JuegoGanado) return; // Si el juego fue ganado, detiene la lï¿½gica
 
         if (other.gameObject.CompareTag("Objetos")) // Detecta objetos con el tag "Objetos"
         {
@@ -47,7 +47,7 @@ public class AgarrarObjeto : MonoBehaviour
                 Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
-                    rb.isKinematic = true; // Hacer el objeto kinemático
+                    rb.isKinematic = true; // Hacer el objeto kinemï¿½tico
                 }
 
                 other.transform.position = puntoAgarre.transform.position; // Mover al punto de agarre
