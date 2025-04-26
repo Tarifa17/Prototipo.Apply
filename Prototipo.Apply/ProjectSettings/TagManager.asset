@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Objetos
   - Contenedores
+  - NPC
   layers:
   - Default
   - TransparentFX
