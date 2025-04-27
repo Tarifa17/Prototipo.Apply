@@ -11,9 +11,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image[] estrellasHUD; // Estrellas del HUD
     [SerializeField] private GameObject pantallaFinal; // Pantalla final
     [SerializeField] private Image[] estrellasGrandes; // Estrellas grandes en la pantalla final
-    [SerializeField] private Button botonMenuPrincipal; // BotÃ³n para ir al menÃº principal
-    [SerializeField] private Button botonVolverJuego; // BotÃ³n para reiniciar el nivel actual
-    [SerializeField] private Button botonSiguienteEscena; // BotÃ³n para pasar a la siguiente escena
+    [SerializeField] private Button botonMenuPrincipal; // Botón para ir al menú principal
+    [SerializeField] private Button botonVolverJuego; // Botón para reiniciar el nivel actual
+    [SerializeField] private Button botonSiguienteEscena; // Botón para pasar a la siguiente escena
 
     private void Awake()
     {
@@ -29,52 +29,23 @@ public class UIManager : MonoBehaviour
 
     public void ActualizarEstrellas(int cantidad)
     {
-        // Verifica que las referencias no se hayan destruido
-        if (estrellasHUD == null || estrellasHUD.Length == 0)
-    {
-        Debug.LogWarning("No hay estrellasHUD asignadas o se han destruido.");
-        return;
-    }
-
-    if (estrellasGrandes == null || estrellasGrandes.Length == 0)
-    {
-        Debug.LogWarning("No hay estrellasGrandes asignadas o se han destruido.");
-        return;
-    }
-
-    // Actualizar estrellas HUD (pequeÃ±as)
-    for (int i = 0; i < estrellasHUD.Length; i++)
-    {
-        if (estrellasHUD[i] == null)
+        for (int i = 0; i < estrellasHUD.Length; i++)
         {
-            Debug.LogWarning($"EstrellaHUD en posiciÃ³n {i} se ha destruido.");
-            continue;
+            bool isEnabled = i < cantidad;
+
+            // Solo reproducir sonido si una nueva estrella es habilitada
+            if (isEnabled && !estrellasHUD[i].enabled)
+            {
+                AudioManager.Instancia.PlayStarEarnedSound();
+            }
+
+            estrellasHUD[i].enabled = isEnabled;
         }
 
-        bool isEnabled = i < cantidad;
-
-        // Solo reproducir sonido si activamos una estrella nueva
-        if (isEnabled && !estrellasHUD[i].enabled)
+        for (int i = 0; i < estrellasGrandes.Length; i++)
         {
-            AudioManager.Instancia.PlayStarEarnedSound();
+            estrellasGrandes[i].enabled = i < cantidad;
         }
-
-        estrellasHUD[i].enabled = isEnabled;
-    }
-
-    // Actualizar estrellas grandes (pantalla de victoria)
-    for (int i = 0; i < estrellasGrandes.Length; i++)
-    {
-        if (estrellasGrandes[i] == null)
-        {
-            Debug.LogWarning($"EstrellaGrande en posiciÃ³n {i} se ha destruido.");
-            continue;
-        }
-
-        estrellasGrandes[i].enabled = i < cantidad;
-    }
-
-        
     }
 
     public void MostrarPantallaFinal()
@@ -89,15 +60,15 @@ public class UIManager : MonoBehaviour
         pantallaFinal.SetActive(true);
     }
 
-    // BotÃ³n: Regresar al MenÃº Principal
+    // Botón: Regresar al Menú Principal
     public void IrAlMenuPrincipal()
     {
         Time.timeScale = 1f; // Restablecer el tiempo normal
 
-        SceneManager.LoadScene("MainMenu"); // Cambia a la escena del menÃº principal
+        SceneManager.LoadScene("MainMenu"); // Cambia a la escena del menú principal
     }
 
-    // BotÃ³n: Volver al Juego
+    // Botón: Volver al Juego
     public void ReiniciarNivel()
     {
         Time.timeScale = 1f; 
@@ -115,7 +86,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No hay mÃ¡s escenas disponibles.");
+            Debug.LogWarning("No hay más escenas disponibles.");
         }
     }
 }
