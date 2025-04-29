@@ -13,6 +13,19 @@ public class NpcInteract : MonoBehaviour
     {
         if (jugadorCerca && Input.GetKeyDown(teclaInteraccion))
         {
+            InteractuarConNpc();
+        }
+    }
+
+    private void InteractuarConNpc()
+    {
+        if (EstadoMinijuego.minijuegoLapiceraCompletado)
+        {
+            Debug.Log("¡Gracias por tu ayuda con la lapicera! Ya la encontré.");
+            // Podrías agregar un diálogo más completo si usás sistema de diálogos.
+        }
+        else
+        {
             MostrarDialogo();
             CargarMinijuego();
         }

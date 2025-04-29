@@ -5,4 +5,5 @@ using UnityEngine;
 public static class EstadoMinijuego 
 {
     public static bool minijuegoLapiceraCompletado = false;
+    public static int tareasCompletadasPrevias = 0;
 }

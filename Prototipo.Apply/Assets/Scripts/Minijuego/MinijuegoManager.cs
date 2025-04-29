@@ -11,6 +11,7 @@ public class MinijuegoManager : MonoBehaviour
     [SerializeField] private GameObject panelLapiceras;
     [SerializeField] private GameObject panelCorrecto;
     [SerializeField] private GameObject panelIncorrecto;
+    [SerializeField] private Button botonReintentar;
     [SerializeField] private string escenaPrincipal = "Escuela";
     [SerializeField] private float tiempoEspera = 5f;
 
@@ -23,7 +24,8 @@ public class MinijuegoManager : MonoBehaviour
         panelLapiceras.SetActive(false);
         panelCorrecto.SetActive(false);
         panelIncorrecto.SetActive(false);
-
+        if (botonReintentar != null)
+            botonReintentar.onClick.AddListener(Reintentar);
     }
 
     private void ValidarPalabra()
@@ -64,14 +66,20 @@ public class MinijuegoManager : MonoBehaviour
             panelCorrecto.SetActive(true);
             //GameManager.Instancia.RegistrarTarea(null);
             EstadoMinijuego.minijuegoLapiceraCompletado = true;
+            StartCoroutine(VolverAEscena());
         }
         else
         {
             Debug.Log("Lapicera incorrecta. El NPC quería la azul.");
             panelIncorrecto.SetActive(true);
         }
-        StartCoroutine(VolverAEscena());
+        
     }
+    private void Reintentar()
+    {
+        SceneManager.LoadScene(escenaPrincipal);
+    }
+
 
     private IEnumerator VolverAEscena()
     {
