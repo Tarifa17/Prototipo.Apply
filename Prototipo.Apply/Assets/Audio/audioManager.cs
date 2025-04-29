@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip backgroundMusicEscuela;
 
     private AudioSource sfxSource; // Fuente de efectos de sonido
-    private AudioSource musicSource; // Fuente de música
+    private AudioSource musicSource; // Fuente de mï¿½sica
 
     private void Awake()
     {
@@ -43,7 +43,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        // Configurar la música de fondo inicial para la escena actual
+        // Configurar la mï¿½sica de fondo inicial para la escena actual
         CambiarMusicaDeFondo(SceneManager.GetActiveScene().name);
 
         // Escuchar cambios de escena
@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Cambiar la música de fondo al cargar una nueva escena
+        // Cambiar la mï¿½sica de fondo al cargar una nueva escena
         CambiarMusicaDeFondo(scene.name);
     }
 
@@ -87,7 +87,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // Métodos para reproducir efectos de sonido
+    // Mï¿½todos para reproducir efectos de sonido
     public void PlayGrabSound()
     {
         sfxSource.PlayOneShot(grabSound);

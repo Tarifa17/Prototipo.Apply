@@ -2698,8 +2698,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1187563801}
   - component: {fileID: 1187563800}
-  - component: {fileID: 1187563802}
-  - component: {fileID: 1187563803}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2736,39 +2734,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1187563802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187563799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc41c4f3898085241a2113468c106e3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabSound: {fileID: 0}
-  dropSound: {fileID: 0}
-  errorSound: {fileID: 0}
-  buttonClickSound: {fileID: 0}
-  starEarnedSound: {fileID: 0}
-  voiceHintSound: {fileID: 0}
-  backgroundMusicSampleScene: {fileID: 0}
-  backgroundMusicIntro: {fileID: 0}
-  backgroundMusicEscuela: {fileID: 0}
---- !u!114 &1187563803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187563799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43918befa711dfd4c8e30d30d7f66b8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1191353158
 PrefabInstance:
   m_ObjectHideFlags: 0

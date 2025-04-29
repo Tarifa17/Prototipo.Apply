@@ -11,9 +11,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image[] estrellasHUD; // Estrellas del HUD
     [SerializeField] private GameObject pantallaFinal; // Pantalla final
     [SerializeField] private Image[] estrellasGrandes; // Estrellas grandes en la pantalla final
-    [SerializeField] private Button botonMenuPrincipal; // Botón para ir al menú principal
-    [SerializeField] private Button botonVolverJuego; // Botón para reiniciar el nivel actual
-    [SerializeField] private Button botonSiguienteEscena; // Botón para pasar a la siguiente escena
+    [SerializeField] private Button botonMenuPrincipal; // Botï¿½n para ir al menï¿½ principal
+    [SerializeField] private Button botonVolverJuego; // Botï¿½n para reiniciar el nivel actual
+    [SerializeField] private Button botonSiguienteEscena; // Botï¿½n para pasar a la siguiente escena
 
     private void Awake()
     {
@@ -60,15 +60,15 @@ public class UIManager : MonoBehaviour
         pantallaFinal.SetActive(true);
     }
 
-    // Botón: Regresar al Menú Principal
+    // Botï¿½n: Regresar al Menï¿½ Principal
     public void IrAlMenuPrincipal()
     {
         Time.timeScale = 1f; // Restablecer el tiempo normal
 
-        SceneManager.LoadScene("MainMenu"); // Cambia a la escena del menú principal
+        SceneManager.LoadScene("MainMenu"); // Cambia a la escena del menï¿½ principal
     }
 
-    // Botón: Volver al Juego
+    // Botï¿½n: Volver al Juego
     public void ReiniciarNivel()
     {
         Time.timeScale = 1f; 
@@ -86,7 +86,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No hay más escenas disponibles.");
+            Debug.LogWarning("No hay mï¿½s escenas disponibles.");
         }
     }
 }
