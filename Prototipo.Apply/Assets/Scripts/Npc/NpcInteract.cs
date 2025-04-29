@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class NpcInteract : MonoBehaviour
+{
+    [SerializeField] private string escenaMinijuego = "Minijuego"; // Nombre exacto de la escena del minijuego
+    [SerializeField] private KeyCode teclaInteraccion = KeyCode.E; // Tecla para interactuar
+    private bool jugadorCerca = false; // Para detectar si el jugador está cerca
+
+    private void Update()
+    {
+        if (jugadorCerca && Input.GetKeyDown(teclaInteraccion))
+        {
+            MostrarDialogo();
+            CargarMinijuego();
+        }
+    }
+
+    private void MostrarDialogo()
+    {
+        Debug.Log("¡Ayuda, necesito encontrar mi lapicera!"); // Después podemos hacer que salga en pantalla.
+    }
+
+    private void CargarMinijuego()
+    {
+        SceneManager.LoadScene(escenaMinijuego); // Cargamos la escena del minijuego
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            jugadorCerca = true;
+            Debug.Log("Presiona 'E' para hablar con el NPC.");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            jugadorCerca = false;
+        }
+    }
+}

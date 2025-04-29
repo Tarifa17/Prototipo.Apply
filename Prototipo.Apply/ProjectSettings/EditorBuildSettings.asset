@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Escuela.unity
     guid: 2ae6604d3db330246903dedeb75751f1
+  - enabled: 1
+    path: Assets/Scenes/Minijuego.unity
+    guid: c276d5cd3959866438125e0c62926f90
   m_configObjects: {}

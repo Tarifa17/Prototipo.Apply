@@ -26,6 +26,16 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+        if (EstadoMinijuego.minijuegoLapiceraCompletado)
+        {
+            EstadoMinijuego.minijuegoLapiceraCompletado = false; // Limpiar el estado para no sumar de nuevo
+            RegistrarTarea(null); // Ahora sí, sumamos la estrella
+            Debug.Log("Tarea de minijuego completada y estrella sumada.");
+        }
+    }
+
 
     public void RegistrarTarea(Contenedores contenedor)
     {
