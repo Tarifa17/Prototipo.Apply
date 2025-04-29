@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public bool JuegoGanado => juegoGanado; // Propiedad pública de solo lectura que permite saber si el juego terminó
 
+    public bool MinijuegoCompletado => EstadoMinijuego.minijuegoLapiceraCompletado;
+
     private void Awake() //Inicializamos solo un manager
     {
         if (Instancia == null)
@@ -30,17 +32,22 @@ public class GameManager : MonoBehaviour
     {
         if (EstadoMinijuego.minijuegoLapiceraCompletado)
         {
-            EstadoMinijuego.minijuegoLapiceraCompletado = false; // Limpiar el estado para no sumar de nuevo
-            RegistrarTarea(null); // Ahora sí, sumamos la estrella
+            for (int i = 0; i < EstadoMinijuego.tareasCompletadasPrevias; i++)
+            {
+                RegistrarTarea(null); // Reagregás las tareas previas
+            }
+
+            RegistrarTarea(null); // Finalmente agregás la del minijuego
+            EstadoMinijuego.minijuegoLapiceraCompletado = false;
             Debug.Log("Tarea de minijuego completada y estrella sumada.");
         }
+
     }
 
 
     public void RegistrarTarea(Contenedores contenedor)
     {
         if (GameManager.Instancia.JuegoGanado) return; //Si el juego esta ganado detiene la logica
-
 
         if (!contenedoresCompletos.Contains(contenedor)) // Si este contenedor no estaba registrado aún, lo agregamos
         {
