@@ -1319,8 +1319,8 @@ MonoBehaviour:
   textoDialogo: {fileID: 2040485080}
   imagenAvatar: {fileID: 1972864068}
   avatarInicial: {fileID: 256903785, guid: 59868b40dc0e3734abcf7c55ae03d645, type: 3}
-  mensajeInicio: ahora vamos a mover los objetos y hablar con la maestra
-  duracionMensaje: 5
+  mensajeInicio: primero hablemos con la maestra y luego ordenemos los objetos
+  duracionMensaje: 10
   audioMensajeInicio: {fileID: 0}
 --- !u!4 &847486711
 Transform:

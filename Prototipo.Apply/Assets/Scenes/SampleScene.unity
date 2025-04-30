@@ -792,7 +792,7 @@ GameObject:
   - component: {fileID: 117451695}
   - component: {fileID: 117451694}
   m_Layer: 0
-  m_Name: Mochila
+  m_Name: Remera
   m_TagString: Objetos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -939,7 +939,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 11914960, guid: dfafbc13f13ded447af48ad7a27af75e, type: 3}
+  m_Sprite: {fileID: -724621483, guid: dfafbc13f13ded447af48ad7a27af75e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1783,7 +1783,7 @@ GameObject:
   - component: {fileID: 583566832}
   - component: {fileID: 583566831}
   m_Layer: 0
-  m_Name: Camiseta
+  m_Name: Almohada
   m_TagString: Objetos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1930,7 +1930,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -724621483, guid: dfafbc13f13ded447af48ad7a27af75e, type: 3}
+  m_Sprite: {fileID: -1510844150, guid: dfafbc13f13ded447af48ad7a27af75e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2196,7 +2196,7 @@ MonoBehaviour:
   imagenAvatar: {fileID: 1972864068}
   avatarInicial: {fileID: 256903785, guid: 59868b40dc0e3734abcf7c55ae03d645, type: 3}
   mensajeInicio: "Coloc\xE1 los objetos en sus respectivos lugares para ganar"
-  duracionMensaje: 5
+  duracionMensaje: 10
   audioMensajeInicio: {fileID: 0}
 --- !u!4 &847486711
 Transform:
