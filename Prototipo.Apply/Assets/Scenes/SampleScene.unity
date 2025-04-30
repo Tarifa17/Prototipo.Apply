@@ -1515,10 +1515,12 @@ MonoBehaviour:
   errorSound: {fileID: 8300000, guid: 1bfe9dde46ba6674ab7cbbc82703d7b6, type: 3}
   buttonClickSound: {fileID: 8300000, guid: 6b9cea68104d79b4ca22530b4ac5ac5a, type: 3}
   starEarnedSound: {fileID: 8300000, guid: f48313378358e7046bed846373873090, type: 3}
-  voiceHintSound: {fileID: 0}
   backgroundMusicSampleScene: {fileID: 8300000, guid: e4fe22c43c1106a41a04d5f0a7c85645, type: 3}
   backgroundMusicIntro: {fileID: 0}
   backgroundMusicEscuela: {fileID: 8300000, guid: b18bccb7606a5784180ea2ad03f2285c, type: 3}
+  voiceHintSampleScene: {fileID: 8300000, guid: 96a507f7bc77b3e4780328679a549439, type: 3}
+  voiceHintIntro: {fileID: 0}
+  voiceHintEscuela: {fileID: 0}
 --- !u!4 &508117501
 Transform:
   m_ObjectHideFlags: 0

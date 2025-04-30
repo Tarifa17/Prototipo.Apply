@@ -13,15 +13,19 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip errorSound;
     [SerializeField] private AudioClip buttonClickSound;
     [SerializeField] private AudioClip starEarnedSound;
-    [SerializeField] private AudioClip voiceHintSound;
 
     [Header("Music")]
     [SerializeField] private AudioClip backgroundMusicSampleScene;
     [SerializeField] private AudioClip backgroundMusicIntro;
     [SerializeField] private AudioClip backgroundMusicEscuela;
 
+    [Header("Voice Hints")]
+    [SerializeField] private AudioClip voiceHintSampleScene;
+    [SerializeField] private AudioClip voiceHintIntro;
+    [SerializeField] private AudioClip voiceHintEscuela;
+
     private AudioSource sfxSource; // Fuente de efectos de sonido
-    private AudioSource musicSource; // Fuente de m�sica
+    private AudioSource musicSource; // Fuente de música
 
     private void Awake()
     {
@@ -43,8 +47,11 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        // Configurar la m�sica de fondo inicial para la escena actual
+        // Configurar la música de fondo inicial para la escena actual
         CambiarMusicaDeFondo(SceneManager.GetActiveScene().name);
+
+        // Reproducir el tutorial de voz inicial con atenuación de la música
+        ReproducirVoiceHintConFade(SceneManager.GetActiveScene().name);
 
         // Escuchar cambios de escena
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -58,36 +65,47 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Cambiar la m�sica de fondo al cargar una nueva escena
+        // Cambiar la música de fondo al cargar una nueva escena
         CambiarMusicaDeFondo(scene.name);
+
+        // Reproducir el tutorial de voz para la nueva escena con fade
+        ReproducirVoiceHintConFade(scene.name);
     }
 
     public void CambiarMusicaDeFondo(string nombreEscena)
     {
+        AudioClip nuevaMusica = null;
+
         switch (nombreEscena)
         {
             case "SampleScene":
-                musicSource.clip = backgroundMusicSampleScene;
+                nuevaMusica = backgroundMusicSampleScene;
                 break;
             case "intro":
-                musicSource.clip = backgroundMusicIntro;
+                nuevaMusica = backgroundMusicIntro;
                 break;
             case "Escuela":
-                musicSource.clip = backgroundMusicEscuela;
+                nuevaMusica = backgroundMusicEscuela; // La misma música que el minijuego
+                break;
+            case "Minijuego":
+                nuevaMusica = backgroundMusicEscuela; // Usamos la misma música para el minijuego
                 break;
             default:
-                musicSource.clip = null;
+                nuevaMusica = null;
                 break;
         }
 
-        if (musicSource.clip != null)
+        // Verificar si la música ya está reproduciéndose
+        if (nuevaMusica != null && (musicSource.clip != nuevaMusica || !musicSource.isPlaying))
         {
+            musicSource.Stop(); // Detener cualquier música en reproducción
+            musicSource.clip = nuevaMusica;
             musicSource.volume = 0.4f;
             musicSource.Play();
         }
     }
 
-    // M�todos para reproducir efectos de sonido
+    // Métodos para reproducir efectos de sonido
     public void PlayGrabSound()
     {
         sfxSource.PlayOneShot(grabSound);
@@ -113,13 +131,63 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(starEarnedSound);
     }
 
-    public void PlayVoiceHint()
-    {
-        sfxSource.PlayOneShot(voiceHintSound);
-    }
-
     public void PlayCustomSound(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
+    }
+
+    // Reproducir Voice Hint con fade para cada escena
+    public void ReproducirVoiceHintConFade(string nombreEscena)
+    {
+        AudioClip voiceHint = null;
+
+        switch (nombreEscena)
+        {
+            case "SampleScene":
+                voiceHint = voiceHintSampleScene;
+                break;
+            case "MainMenu":
+                voiceHint = voiceHintIntro;
+                break;
+            case "Escuela":
+                voiceHint = voiceHintEscuela;
+                break;
+        }
+
+        if (voiceHint != null)
+        {
+            StartCoroutine(FadeOutMusicAndPlayHint(voiceHint));
+        }
+    }
+
+    private IEnumerator FadeOutMusicAndPlayHint(AudioClip hintClip)
+    {
+        // Atenuar la música de fondo (fade out)
+        float fadeDuration = 1.0f; // Duración del fade
+        float targetVolume = 0.1f; // Volumen reducido para la música
+        float originalVolume = musicSource.volume;
+
+        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+        {
+            musicSource.volume = Mathf.Lerp(originalVolume, targetVolume, t / fadeDuration);
+            yield return null;
+        }
+
+        musicSource.volume = targetVolume;
+
+        // Reproducir el hint
+        sfxSource.PlayOneShot(hintClip);
+
+        // Esperar hasta que termine el hint
+        yield return new WaitForSeconds(hintClip.length);
+
+        // Restaurar la música de fondo (fade in)
+        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+        {
+            musicSource.volume = Mathf.Lerp(targetVolume, originalVolume, t / fadeDuration);
+            yield return null;
+        }
+
+        musicSource.volume = originalVolume;
     }
 }
