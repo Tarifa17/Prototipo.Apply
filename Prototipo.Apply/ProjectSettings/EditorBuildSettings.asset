@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Parque.unity
     guid: 2c1721a7f47b8c84cae6e67516c39352
   - enabled: 1
+    path: Assets/Scenes/kioskoSaludable.unity
+    guid: 8bd3c6153073b9f4ebcb55b4037b1e97
+  - enabled: 1
     path: Assets/Scenes/Minijuego.unity
     guid: c276d5cd3959866438125e0c62926f90
   m_configObjects: {}

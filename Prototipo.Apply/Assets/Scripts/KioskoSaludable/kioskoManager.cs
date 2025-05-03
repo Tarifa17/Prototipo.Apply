@@ -14,14 +14,14 @@ public class KioskoSaludableManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoVuelto; // Texto del vuelto
     [SerializeField] private GameObject panelIncorrecto; // Panel para mostrar el mensaje de derrota
     [SerializeField] private GameObject panelCorrecto; // Panel para mostrar el mensaje de victoria
-    [SerializeField] private Button botonComprar; // Botón de comprar
-    [SerializeField] private GameObject contenedorVacios; // Contenedor para mostrar cuando no hay selección
+    [SerializeField] private Button botonComprar; // Botï¿½n de comprar
+    [SerializeField] private GameObject contenedorVacios; // Contenedor para mostrar cuando no hay selecciï¿½n
 
     [Header("Productos")]
     [SerializeField] private ProductoUI[] productosUI; // Referencias a los componentes de UI de productos
 
     [Header("Configuraciones")]
-    [SerializeField] private string escenaPrincipal = "Parque"; // Escena a la que se regresa después del minijuego
+    [SerializeField] private string escenaPrincipal = "Parque"; // Escena a la que se regresa despuï¿½s del minijuego
     [SerializeField] private float tiempoEspera = 5f; // Tiempo de espera antes de salir del minijuego
 
     private int dineroDisponible = 4000; // Dinero inicial del jugador
@@ -32,10 +32,10 @@ public class KioskoSaludableManager : MonoBehaviour
         // Inicializar la UI
         ActualizarUIInicial();
 
-        // Asignar evento al botón de comprar
+        // Asignar evento al botï¿½n de comprar
         botonComprar.onClick.AddListener(ComprarProducto);
 
-        // Si no hay productos asignados, buscarlos automáticamente
+        // Si no hay productos asignados, buscarlos automï¿½ticamente
         if (productosUI == null || productosUI.Length == 0)
         {
             productosUI = FindObjectsOfType<ProductoUI>();
@@ -70,7 +70,7 @@ public class KioskoSaludableManager : MonoBehaviour
     {
         if (productoSeleccionado == null)
         {
-            Debug.Log("No has seleccionado ningún producto.");
+            Debug.Log("No has seleccionado ningï¿½n producto.");
             return;
         }
 
@@ -92,7 +92,7 @@ public class KioskoSaludableManager : MonoBehaviour
         if (!productoSeleccionado.esSaludable)
         {
             // Si el producto no es saludable, mostrar mensaje de derrota
-            Debug.Log("¡Perdiste! Elegiste un producto no saludable.");
+            Debug.Log("ï¿½Perdiste! Elegiste un producto no saludable.");
             panelIncorrecto.SetActive(true);
             // NO inicia la corrutina para volver a la escena
             // El jugador puede intentar de nuevo
@@ -100,7 +100,7 @@ public class KioskoSaludableManager : MonoBehaviour
         else
         {
             // Si el producto es saludable, mostrar mensaje de victoria
-            Debug.Log($"¡Producto comprado! Producto saludable.");
+            Debug.Log($"ï¿½Producto comprado! Producto saludable.");
 
             if (panelCorrecto != null)
                 panelCorrecto.SetActive(true);
@@ -113,10 +113,15 @@ public class KioskoSaludableManager : MonoBehaviour
     private IEnumerator VolverAEscena()
     {
         yield return new WaitForSeconds(tiempoEspera);
+        EstadoKiosko.minijuegoCompletado = true;
+        GameManagerP instancia = FindObjectOfType<GameManagerP>();
+        if (instancia != null)
+            instancia.SumarEstrellaMinijuego();
+
         SceneManager.LoadScene(escenaPrincipal);
     }
 
-    // Método para reiniciar el kiosko (puede ser llamado desde un botón de reinicio)
+    // Mï¿½todo para reiniciar el kiosko (puede ser llamado desde un botï¿½n de reinicio)
     public void ReiniciarKiosko()
     {
         ActualizarUIInicial();
