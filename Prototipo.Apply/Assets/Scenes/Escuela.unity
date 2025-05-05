@@ -1777,9 +1777,9 @@ MonoBehaviour:
   - {fileID: 564448544}
   pantallaFinal: {fileID: 1062254211}
   estrellasGrandes:
-  - {fileID: 1541941307}
-  - {fileID: 454140641}
-  - {fileID: 564448544}
+  - {fileID: 1186752071}
+  - {fileID: 1183370511}
+  - {fileID: 1573627543}
   botonMenuPrincipal: {fileID: 1753280160}
   botonVolverJuego: {fileID: 1384386640}
   botonSiguienteEscena: {fileID: 1613086866}

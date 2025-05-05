@@ -14,28 +14,36 @@ public class KioskoSaludableManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoVuelto; // Texto del vuelto
     [SerializeField] private GameObject panelIncorrecto; // Panel para mostrar el mensaje de derrota
     [SerializeField] private GameObject panelCorrecto; // Panel para mostrar el mensaje de victoria
-    [SerializeField] private Button botonComprar; // Bot�n de comprar
-    [SerializeField] private GameObject contenedorVacios; // Contenedor para mostrar cuando no hay selecci�n
+    [SerializeField] private Button botonComprar; // Botón de comprar
+    [SerializeField] private GameObject contenedorVacios; // Contenedor para mostrar cuando no hay selección
 
     [Header("Productos")]
     [SerializeField] private ProductoUI[] productosUI; // Referencias a los componentes de UI de productos
 
     [Header("Configuraciones")]
-    [SerializeField] private string escenaPrincipal = "Parque"; // Escena a la que se regresa despu�s del minijuego
+    [SerializeField] private string escenaPrincipal = "Parque"; // Escena a la que se regresa después del minijuego
     [SerializeField] private float tiempoEspera = 5f; // Tiempo de espera antes de salir del minijuego
 
     private int dineroDisponible = 4000; // Dinero inicial del jugador
     private Producto productoSeleccionado; // Producto actualmente seleccionado
+    private KioskoAudioManager audioManager; // Referencia al audio manager
 
     private void Start()
     {
+        // Obtener referencia al audio manager
+        audioManager = KioskoAudioManager.Instance;
+        if (audioManager == null)
+        {
+            Debug.LogWarning("KioskoAudioManager no encontrado");
+        }
+
         // Inicializar la UI
         ActualizarUIInicial();
 
-        // Asignar evento al bot�n de comprar
+        // Asignar evento al botón de comprar
         botonComprar.onClick.AddListener(ComprarProducto);
 
-        // Si no hay productos asignados, buscarlos autom�ticamente
+        // Si no hay productos asignados, buscarlos automáticamente
         if (productosUI == null || productosUI.Length == 0)
         {
             productosUI = FindObjectsOfType<ProductoUI>();
@@ -61,6 +69,12 @@ public class KioskoSaludableManager : MonoBehaviour
         productoSeleccionado = producto;
         textoPrecioProducto.text = $"Precio: ${producto.precio}";
 
+        // Reproducir sonido de selección de producto
+        if (audioManager != null)
+        {
+            audioManager.PlayProductoSeleccionado();
+        }
+
         // Ocultar el contenedor de vacios al seleccionar un producto
         if (contenedorVacios != null)
             contenedorVacios.SetActive(false);
@@ -68,9 +82,15 @@ public class KioskoSaludableManager : MonoBehaviour
 
     private void ComprarProducto()
     {
+        // Reproducir sonido de clic en botón
+        if (audioManager != null)
+        {
+            audioManager.PlayBotonClick();
+        }
+
         if (productoSeleccionado == null)
         {
-            Debug.Log("No has seleccionado ning�n producto.");
+            Debug.Log("No has seleccionado ningún producto.");
             return;
         }
 
@@ -89,21 +109,40 @@ public class KioskoSaludableManager : MonoBehaviour
         textoVuelto.text = $"Vuelto: ${vuelto}";
         panelVuelto.SetActive(true);
 
+        // Reproducir sonido de vuelto
+        if (audioManager != null)
+        {
+            audioManager.PlayVueltoSound(vuelto);
+        }
+
         if (!productoSeleccionado.esSaludable)
         {
             // Si el producto no es saludable, mostrar mensaje de derrota
-            Debug.Log("�Perdiste! Elegiste un producto no saludable.");
+            Debug.Log("¡Perdiste! Elegiste un producto no saludable.");
             panelIncorrecto.SetActive(true);
+
+            // Reproducir sonido de compra incorrecta
+            if (audioManager != null)
+            {
+                audioManager.PlayCompraIncorrecta();
+            }
+
             // NO inicia la corrutina para volver a la escena
             // El jugador puede intentar de nuevo
         }
         else
         {
             // Si el producto es saludable, mostrar mensaje de victoria
-            Debug.Log($"�Producto comprado! Producto saludable.");
+            Debug.Log($"¡Producto comprado! Producto saludable.");
 
             if (panelCorrecto != null)
                 panelCorrecto.SetActive(true);
+
+            // Reproducir sonido de compra exitosa
+            if (audioManager != null)
+            {
+                audioManager.PlayCompraExitosa();
+            }
 
             // Solo cambia de escena cuando el producto es saludable
             StartCoroutine(VolverAEscena());
@@ -121,9 +160,15 @@ public class KioskoSaludableManager : MonoBehaviour
         SceneManager.LoadScene(escenaPrincipal);
     }
 
-    // M�todo para reiniciar el kiosko (puede ser llamado desde un bot�n de reinicio)
+    // Método para reiniciar el kiosko (puede ser llamado desde un botón de reinicio)
     public void ReiniciarKiosko()
     {
+        // Reproducir sonido de clic en botón
+        if (audioManager != null)
+        {
+            audioManager.PlayBotonClick();
+        }
+
         ActualizarUIInicial();
         productoSeleccionado = null;
     }
