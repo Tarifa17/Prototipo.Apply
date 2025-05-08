@@ -122,7 +122,7 @@ public class KioskoSaludableManager : MonoBehaviour
             Debug.Log("¡Perdiste! Elegiste un producto no saludable.");
             panelIncorrecto.SetActive(true);
             //panelCorrecto.SetActive(true);
-            StartCoroutine(CerrarKioskoPanel());
+            //StartCoroutine(CerrarKioskoPanel());
 
             // Reproducir sonido de compra incorrecta
             if (audioManager != null)
