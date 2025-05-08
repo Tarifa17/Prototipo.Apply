@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class NpcInteract : MonoBehaviour
 {
-    [SerializeField] private string escenaMinijuego = "Minijuego"; // Nombre exacto de la escena del minijuego
     [SerializeField] private KeyCode teclaInteraccion = KeyCode.E; // Tecla para interactuar
+    [SerializeField] private MinijuegoManager minijuegoManager;
     private bool jugadorCerca = false; // Para detectar si el jugador está cerca
 
     private void Update()
@@ -38,7 +38,14 @@ public class NpcInteract : MonoBehaviour
 
     private void CargarMinijuego()
     {
-        SceneManager.LoadScene(escenaMinijuego); // Cargamos la escena del minijuego
+        if (minijuegoManager != null)
+        {
+            minijuegoManager.ActivarMinijuego(); // Llama al método que activa el panel
+        }
+        else
+        {
+            Debug.LogWarning("MinijuegoManager no asignado en el Inspector.");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

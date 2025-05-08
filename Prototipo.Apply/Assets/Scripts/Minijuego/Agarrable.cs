@@ -23,7 +23,11 @@ public class Agarrable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / transform.root.GetComponent<Canvas>().scaleFactor; //Arrastramos la letra siguiendo el cursor
+        Canvas canvas = GetComponentInParent<Canvas>();
+        if (canvas != null)
+        {
+            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        } //Arrastramos la letra siguiendo el cursor
     }
 
     public void OnEndDrag(PointerEventData eventData)

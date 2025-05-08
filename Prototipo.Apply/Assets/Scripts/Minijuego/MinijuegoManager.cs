@@ -8,11 +8,13 @@ public class MinijuegoManager : MonoBehaviour
 {
     [SerializeField] private List<Dropeable> espaciosVacios; //Referencias a los espacios vacíos
     [SerializeField] private Button botonValidar;
+    [SerializeField] private GameObject panelMinijuego;
     [SerializeField] private GameObject panelLapiceras;
     [SerializeField] private GameObject panelCorrecto;
     [SerializeField] private GameObject panelIncorrecto;
     [SerializeField] private Button botonReintentar;
-    [SerializeField] private string escenaPrincipal = "Escuela";
+
+    [Header("Configuración")]
     [SerializeField] private float tiempoEspera = 5f;
 
     private string palabraCorrecta = "LAPICERA";
@@ -20,14 +22,26 @@ public class MinijuegoManager : MonoBehaviour
 
     private void Start()
     {
-        botonValidar.onClick.AddListener(ValidarPalabra); //El evento al hacer click en el boton validar es asociado a la funcion Validar Palabra
+        botonValidar.onClick.AddListener(ValidarPalabra);
+        if (botonReintentar != null)
+            botonReintentar.onClick.AddListener(Reintentar);
+
+        // Desactivar paneles al iniciar
+        panelMinijuego.SetActive(false);
         panelLapiceras.SetActive(false);
         panelCorrecto.SetActive(false);
         panelIncorrecto.SetActive(false);
-        if (botonReintentar != null)
-            botonReintentar.onClick.AddListener(Reintentar);
     }
 
+    public void ActivarMinijuego()
+    {
+        panelMinijuego.SetActive(true);
+    }
+    private void FinalizarMinijuego()
+    {
+        panelMinijuego.SetActive(false);
+        lapiceraSeleccionada = false;
+    }
     private void ValidarPalabra()
     {
         string palabraFormada = "";
@@ -53,6 +67,7 @@ public class MinijuegoManager : MonoBehaviour
         else
         {
             Debug.Log("Palabra incorrecta");
+            panelIncorrecto.SetActive(true);
         }
     }
     public void SeleccionarLapicera(string color)
@@ -64,9 +79,8 @@ public class MinijuegoManager : MonoBehaviour
         {
             Debug.Log("¡Correcto! Elegiste la lapicera azul.");
             panelCorrecto.SetActive(true);
-            //GameManager.Instancia.RegistrarTarea(null);
-            EstadoMinijuego.minijuegoLapiceraCompletado = true;
-            StartCoroutine(VolverAEscena());
+
+            StartCoroutine(CerrarMinijuego());
         }
         else
         {
@@ -77,14 +91,40 @@ public class MinijuegoManager : MonoBehaviour
     }
     private void Reintentar()
     {
-        SceneManager.LoadScene(escenaPrincipal);
+        lapiceraSeleccionada = false;
+        panelIncorrecto.SetActive(false);
+        panelLapiceras.SetActive(false);
+
+        foreach (Dropeable espacio in espaciosVacios)
+        {
+            if (espacio.transform.childCount > 0)
+                Destroy(espacio.transform.GetChild(0).gameObject);
+        }
     }
 
-
-    private IEnumerator VolverAEscena()
+    private IEnumerator CerrarMinijuego()
     {
         yield return new WaitForSeconds(tiempoEspera);
-        SceneManager.LoadScene(escenaPrincipal);
-    }
 
+        EstadoMinijuego.minijuegoLapiceraCompletado = true;
+
+        GameManagerP instancia = FindObjectOfType<GameManagerP>();
+
+        if (instancia != null)
+        {
+            instancia.SumarEstrellaMinijuego();
+            Debug.Log("⭐ Estrella sumada correctamente desde el kiosko.");
+        }
+        else
+        {
+            Debug.LogError("❌ No se encontró GameManagerP en la escena. No se pudo sumar estrella.");
+        }
+        // Cerrar panel de minijuego
+        panelMinijuego.SetActive(false);
+
+        // Resetear flag
+        lapiceraSeleccionada = false;
+
+        Debug.Log("🧩 Panel del minijuego cerrado correctamente.");
+    }
 }
