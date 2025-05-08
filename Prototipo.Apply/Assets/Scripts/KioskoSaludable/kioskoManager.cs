@@ -16,12 +16,13 @@ public class KioskoSaludableManager : MonoBehaviour
     [SerializeField] private GameObject panelCorrecto; // Panel para mostrar el mensaje de victoria
     [SerializeField] private Button botonComprar; // Botón de comprar
     [SerializeField] private GameObject contenedorVacios; // Contenedor para mostrar cuando no hay selección
+    [SerializeField] private GameObject panelKioskoPrincipal;
 
     [Header("Productos")]
     [SerializeField] private ProductoUI[] productosUI; // Referencias a los componentes de UI de productos
 
     [Header("Configuraciones")]
-    [SerializeField] private string escenaPrincipal = "Parque"; // Escena a la que se regresa después del minijuego
+    //[SerializeField] private string escenaPrincipal = "Parque"; // Escena a la que se regresa después del minijuego
     [SerializeField] private float tiempoEspera = 5f; // Tiempo de espera antes de salir del minijuego
 
     private int dineroDisponible = 4000; // Dinero inicial del jugador
@@ -120,6 +121,8 @@ public class KioskoSaludableManager : MonoBehaviour
             // Si el producto no es saludable, mostrar mensaje de derrota
             Debug.Log("¡Perdiste! Elegiste un producto no saludable.");
             panelIncorrecto.SetActive(true);
+            //panelCorrecto.SetActive(true);
+            StartCoroutine(CerrarKioskoPanel());
 
             // Reproducir sonido de compra incorrecta
             if (audioManager != null)
@@ -145,20 +148,44 @@ public class KioskoSaludableManager : MonoBehaviour
             }
 
             // Solo cambia de escena cuando el producto es saludable
-            StartCoroutine(VolverAEscena());
+            StartCoroutine(CerrarKioskoPanel());
+
         }
     }
 
-    private IEnumerator VolverAEscena()
+    private IEnumerator CerrarKioskoPanel()
     {
         yield return new WaitForSeconds(tiempoEspera);
-        EstadoKiosko.minijuegoCompletado = true;
-        GameManagerP instancia = FindObjectOfType<GameManagerP>();
-        if (instancia != null)
-            instancia.SumarEstrellaMinijuego();
 
-        SceneManager.LoadScene(escenaPrincipal);
+        // Marcar que el minijuego fue completado
+        EstadoKiosko.minijuegoCompletado = true;
+
+        // Buscar instancia del GameManagerP
+        GameManagerP instancia = FindObjectOfType<GameManagerP>();
+
+        if (instancia != null)
+        {
+            instancia.SumarEstrellaMinijuego();
+            Debug.Log("⭐ Estrella sumada correctamente desde el kiosko.");
+        }
+        else
+        {
+            Debug.LogError("❌ No se encontró GameManagerP en la escena. No se pudo sumar estrella.");
+        }
+
+        // Cerrar el panel contenedor del kiosko
+        if (panelKioskoPrincipal != null)
+        {
+            panelKioskoPrincipal.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ No se asignó el panelKioskoPrincipal en el Inspector.");
+        }
+
     }
+
+
 
     // Método para reiniciar el kiosko (puede ser llamado desde un botón de reinicio)
     public void ReiniciarKiosko()

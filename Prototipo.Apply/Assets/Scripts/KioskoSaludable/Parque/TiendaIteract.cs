@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class TiendaIteract : MonoBehaviour
 {
     [SerializeField] private AudioClip interactSound;
+    [SerializeField] private GameObject canvasKiosko;
     private AudioSource audioSource;
     private bool jugadorEnRango = false;
 
@@ -17,31 +18,30 @@ public class TiendaIteract : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+        if (canvasKiosko != null)
+        {
+            canvasKiosko.SetActive(false);
+        }
     }
 
     private void Update()
     {
         if (jugadorEnRango && Input.GetKeyDown(KeyCode.E))
         {
-            // Reproducir sonido de interacción
+            // Reproducir sonido de interacciï¿½n
             if (interactSound != null && audioSource != null)
             {
                 audioSource.PlayOneShot(interactSound);
-                // Esperar un poco para que se escuche el sonido antes de cambiar de escena
-                StartCoroutine(CambiarEscenaDespuesDeSonido());
+            }
+            if (canvasKiosko != null)
+            {
+                canvasKiosko.SetActive(true);
             }
             else
             {
-                SceneManager.LoadScene("kioskoSaludable");
+                Debug.LogWarning("Panel del kiosko no asignado en el Inspector.");
             }
         }
-    }
-
-    private IEnumerator CambiarEscenaDespuesDeSonido()
-    {
-        // Esperar un poco para que se escuche el sonido
-        yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("kioskoSaludable");
     }
 
     private void OnTriggerEnter2D(Collider2D other)

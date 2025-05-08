@@ -30,19 +30,21 @@ public class GameManagerP : MonoBehaviour
 
     private void Start()
     {
-        if (EstadoKiosko.minijuegoCompletado)
+        uiManager = FindObjectOfType<UIManagerP>();
+
+        if (uiManager == null)
         {
-            estrellasMinijuegos = 1;
-            EstadoKiosko.minijuegoCompletado = false;
-            Debug.Log("Minijuego kiosko completado, estrella sumada.");
+            Debug.LogWarning("UIManagerP no encontrado. Verifica que el Canvas esté activo.");
+            return;
         }
 
+        // Ya no usamos EstadoKiosko.minijuegoCompletado, porque ahora se queda en la misma escena.
         ActualizarEstrellasTotales();
     }
 
     public void RegistrarTarea(ContenedoresP contenedorp)
     {
-        if (juegoGanado) return;
+        if (juegoGanado || contenedorp == null || contenedoresCompletos.Contains(contenedorp)) return;
 
         if (contenedorp != null && !contenedoresCompletos.Contains(contenedorp))
         {
@@ -72,13 +74,18 @@ public class GameManagerP : MonoBehaviour
     private void ActualizarEstrellasTotales()
     {
         int total = contenedoresCompletos.Count + estrellasMinijuegos;
-        uiManager.ActualizarEstrellas(total);
+        if (uiManager != null)
+            uiManager.ActualizarEstrellas(total);
+        else
+            Debug.LogWarning("uiManager es null al intentar actualizar estrellas.");
 
         if (total >= totalTareas && !juegoGanado)
         {
             juegoGanado = true;
             Time.timeScale = 0f;
-            uiManager.MostrarPantallaFinal();
+
+            if (uiManager != null)
+                uiManager.MostrarPantallaFinal();
         }
     }
 
