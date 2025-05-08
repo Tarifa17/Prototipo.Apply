@@ -31,7 +31,7 @@ public class KioskoAudioManager : MonoBehaviour
             return;
         }
 
-        // Crear fuentes de audio si no están asignadas
+        // Crear fuentes de audio si no estï¿½n asignadas
         if (sfxSource == null)
         {
             sfxSource = gameObject.AddComponent<AudioSource>();
@@ -101,7 +101,7 @@ public class KioskoAudioManager : MonoBehaviour
         // Esperar a que termine el sonido de vuelto
         yield return new WaitForSeconds(0.5f);
 
-        // Aquí podrías reproducir un clip de voz que anuncie el vuelto
+        // Aquï¿½ podrï¿½as reproducir un clip de voz que anuncie el vuelto
         // Por ahora, dejamos esto preparado para futuras implementaciones
     }
 }

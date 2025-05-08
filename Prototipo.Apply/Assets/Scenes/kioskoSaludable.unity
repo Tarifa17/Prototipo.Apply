@@ -1670,7 +1670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1045066403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2056,6 +2056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactSound: {fileID: 8300000, guid: 0e30036e04dae7940b544af6b805f226, type: 3}
+  canvasKiosko: {fileID: 0}
 --- !u!4 &1195991813
 Transform:
   m_ObjectHideFlags: 0
@@ -2643,7 +2644,6 @@ MonoBehaviour:
   - {fileID: 710739323}
   - {fileID: 1571717823}
   - {fileID: 2003708900}
-  escenaPrincipal: Parque
   tiempoEspera: 3
 --- !u!1 &1808939495
 GameObject:
