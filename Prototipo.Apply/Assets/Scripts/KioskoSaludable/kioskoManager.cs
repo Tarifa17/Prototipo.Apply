@@ -50,6 +50,15 @@ public class KioskoSaludableManager : MonoBehaviour
             productosUI = FindObjectsOfType<ProductoUI>();
         }
     }
+    private void OnEnable()
+    {
+        // Al activar el panel del kiosko, asegurarse de que el audio manager también se active
+        if (audioManager != null)
+        {
+            // La llamada a AbrirKiosko inicia la transición de música
+            audioManager.AbrirKiosko();
+        }
+    }
 
     private void ActualizarUIInicial()
     {
@@ -173,6 +182,14 @@ public class KioskoSaludableManager : MonoBehaviour
             Debug.LogError("❌ No se encontró GameManagerP en la escena. No se pudo sumar estrella.");
         }
 
+        // Hacer fade out de la música del kiosko antes de cerrar el panel
+        if (audioManager != null)
+        {
+            audioManager.CerrarKiosko();
+            // Esperar un poco para que el fade out termine
+            yield return new WaitForSeconds(1.0f);
+        }
+
         // Cerrar el panel contenedor del kiosko
         if (panelKioskoPrincipal != null)
         {
@@ -182,7 +199,6 @@ public class KioskoSaludableManager : MonoBehaviour
         {
             Debug.LogWarning("⚠️ No se asignó el panelKioskoPrincipal en el Inspector.");
         }
-
     }
 
 

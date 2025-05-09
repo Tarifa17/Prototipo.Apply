@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip backgroundMusicSampleScene;
     [SerializeField] private AudioClip backgroundMusicIntro;
     [SerializeField] private AudioClip backgroundMusicEscuela;
+    [SerializeField] private AudioClip backgroundMusicParque;
 
     [Header("Voice Hints")]
     [SerializeField] private AudioClip voiceHintSampleScene;
@@ -89,6 +90,9 @@ public class AudioManager : MonoBehaviour
                 break;
             case "Minijuego":
                 nuevaMusica = backgroundMusicEscuela; // Usamos la misma música para el minijuego
+                break;
+            case "Parque":
+                nuevaMusica = backgroundMusicParque;
                 break;
             default:
                 nuevaMusica = null;
@@ -189,5 +193,19 @@ public class AudioManager : MonoBehaviour
         }
 
         musicSource.volume = originalVolume;
+    }
+    public AudioSource GetMusicSource()
+    {
+        return musicSource;
+    }
+
+    // Método para ajustar temporalmente el volumen de la música de fondo
+    // (útil para cuando se abre un panel como el kiosko)
+    public void AjustarVolumenMusica(float nuevoVolumen)
+    {
+        if (musicSource != null)
+        {
+            musicSource.volume = nuevoVolumen;
+        }
     }
 }

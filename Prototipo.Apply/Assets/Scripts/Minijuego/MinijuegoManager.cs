@@ -26,6 +26,10 @@ public class MinijuegoManager : MonoBehaviour
         if (botonReintentar != null)
             botonReintentar.onClick.AddListener(Reintentar);
 
+        // Agregar sonido de click a los botones
+        AddButtonClickSound(botonValidar);
+        AddButtonClickSound(botonReintentar);
+
         // Desactivar paneles al iniciar
         panelMinijuego.SetActive(false);
         panelLapiceras.SetActive(false);
@@ -33,15 +37,31 @@ public class MinijuegoManager : MonoBehaviour
         panelIncorrecto.SetActive(false);
     }
 
+    // Método para agregar sonido de click a cualquier botón
+    private void AddButtonClickSound(Button boton)
+    {
+        if (boton != null)
+        {
+            boton.onClick.AddListener(() => {
+                if (MinijuegoAudio.Instancia != null)
+                {
+                    MinijuegoAudio.Instancia.SonidoBoton();
+                }
+            });
+        }
+    }
+
     public void ActivarMinijuego()
     {
         panelMinijuego.SetActive(true);
     }
+
     private void FinalizarMinijuego()
     {
         panelMinijuego.SetActive(false);
         lapiceraSeleccionada = false;
     }
+
     private void ValidarPalabra()
     {
         string palabraFormada = "";
@@ -55,6 +75,12 @@ public class MinijuegoManager : MonoBehaviour
             else
             {
                 Debug.Log("No todas las letras fueron colocadas");
+
+                // Reproducir sonido de error
+                if (MinijuegoAudio.Instancia != null)
+                {
+                    MinijuegoAudio.Instancia.SonidoError();
+                }
                 return;
             }
         }
@@ -62,14 +88,29 @@ public class MinijuegoManager : MonoBehaviour
         if (palabraFormada == palabraCorrecta)
         {
             Debug.Log("¡Palabra correcta!");
+
+            // Reproducir sonido de éxito
+            if (MinijuegoAudio.Instancia != null)
+            {
+                MinijuegoAudio.Instancia.SonidoPalabraCorrecta();
+            }
+
             panelLapiceras.SetActive(true);
         }
         else
         {
             Debug.Log("Palabra incorrecta");
+
+            // Reproducir sonido de error
+            if (MinijuegoAudio.Instancia != null)
+            {
+                MinijuegoAudio.Instancia.SonidoPalabraIncorrecta();
+            }
+
             panelIncorrecto.SetActive(true);
         }
     }
+
     public void SeleccionarLapicera(string color)
     {
         if (lapiceraSeleccionada) return;
@@ -78,6 +119,13 @@ public class MinijuegoManager : MonoBehaviour
         if (color == "Azul")
         {
             Debug.Log("¡Correcto! Elegiste la lapicera azul.");
+
+            // Reproducir sonido de éxito
+            if (MinijuegoAudio.Instancia != null)
+            {
+                MinijuegoAudio.Instancia.SonidoLapiceraCorrecta();
+            }
+
             panelCorrecto.SetActive(true);
 
             StartCoroutine(CerrarMinijuego());
@@ -85,10 +133,17 @@ public class MinijuegoManager : MonoBehaviour
         else
         {
             Debug.Log("Lapicera incorrecta. El NPC quería la azul.");
+
+            // Reproducir sonido de error
+            if (MinijuegoAudio.Instancia != null)
+            {
+                MinijuegoAudio.Instancia.SonidoLapiceraIncorrecta();
+            }
+
             panelIncorrecto.SetActive(true);
         }
-        
     }
+
     private void Reintentar()
     {
         lapiceraSeleccionada = false;
@@ -114,11 +169,18 @@ public class MinijuegoManager : MonoBehaviour
         {
             instancia.SumarEstrellaMinijuego();
             Debug.Log("⭐ Estrella sumada correctamente desde el kiosko.");
+
+            // Reproducir sonido de estrella
+            if (MinijuegoAudio.Instancia != null)
+            {
+                MinijuegoAudio.Instancia.SonidoEstrella();
+            }
         }
         else
         {
             Debug.LogError("❌ No se encontró GameManagerP en la escena. No se pudo sumar estrella.");
         }
+
         // Cerrar panel de minijuego
         panelMinijuego.SetActive(false);
 

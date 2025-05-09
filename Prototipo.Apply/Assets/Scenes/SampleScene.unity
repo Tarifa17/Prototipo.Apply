@@ -1518,9 +1518,10 @@ MonoBehaviour:
   backgroundMusicSampleScene: {fileID: 8300000, guid: e4fe22c43c1106a41a04d5f0a7c85645, type: 3}
   backgroundMusicIntro: {fileID: 0}
   backgroundMusicEscuela: {fileID: 8300000, guid: b18bccb7606a5784180ea2ad03f2285c, type: 3}
+  backgroundMusicParque: {fileID: 8300000, guid: b1f3f095e8ce2fa4eb79e6d47fbbe0a5, type: 3}
   voiceHintSampleScene: {fileID: 8300000, guid: 96a507f7bc77b3e4780328679a549439, type: 3}
   voiceHintIntro: {fileID: 0}
-  voiceHintEscuela: {fileID: 0}
+  voiceHintEscuela: {fileID: 8300000, guid: a89a54799833bf245a91f3c4ce1b3886, type: 3}
 --- !u!4 &508117501
 Transform:
   m_ObjectHideFlags: 0
