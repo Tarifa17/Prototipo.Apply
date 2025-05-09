@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems; 
+using UnityEngine.EventSystems;
 
 public class Agarrable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -19,6 +19,12 @@ public class Agarrable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         originalParent = transform.parent; //Guardamos la posicion original en el padre para poder volver 
         canvasGroup.blocksRaycasts = false; //Desactivamos los raycast para poder moverlos y volver
+
+        // Reproducir sonido al agarrar
+        if (MinijuegoAudio.Instancia != null)
+        {
+            MinijuegoAudio.Instancia.SonidoAgarrar();
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -39,6 +45,13 @@ public class Agarrable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             transform.SetParent(originalParent);
             rectTransform.anchoredPosition = Vector2.zero;
         }
+        else
+        {
+            // Reproducir sonido al colocar en un slot válido
+            if (MinijuegoAudio.Instancia != null)
+            {
+                MinijuegoAudio.Instancia.SonidoColocar();
+            }
+        }
     }
-
 }
