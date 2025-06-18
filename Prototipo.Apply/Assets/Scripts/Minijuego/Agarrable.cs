@@ -47,7 +47,7 @@ public class Agarrable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         }
         else
         {
-            // Reproducir sonido al colocar en un slot válido
+            // Reproducir sonido al colocar en un slot vï¿½lido
             if (MinijuegoAudio.Instancia != null)
             {
                 MinijuegoAudio.Instancia.SonidoColocar();

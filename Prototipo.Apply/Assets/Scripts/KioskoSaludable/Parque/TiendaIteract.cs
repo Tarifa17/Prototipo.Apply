@@ -28,6 +28,11 @@ public class TiendaIteract : MonoBehaviour
     {
         if (jugadorEnRango && Input.GetKeyDown(KeyCode.E))
         {
+            if (EstadoMinijuego.minijuegoKioskoSaludableCompletado)
+            {
+                Debug.Log("El minijuego del kiosko saludable ya fue completado.");
+                return;
+            }
             // Reproducir sonido de interacci�n
             if (interactSound != null && audioSource != null)
             {
