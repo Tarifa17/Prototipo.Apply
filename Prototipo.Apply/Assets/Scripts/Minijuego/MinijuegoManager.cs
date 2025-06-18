@@ -14,6 +14,10 @@ public class MinijuegoManager : MonoBehaviour
     [SerializeField] private GameObject panelIncorrecto;
     [SerializeField] private Button botonReintentar;
 
+    [SerializeField] private Transform contenedorLetras; 
+    [SerializeField] private List<GameObject> prefabsLetras; 
+
+
     [Header("Configuración")]
     [SerializeField] private float tiempoEspera = 5f;
 
@@ -54,6 +58,7 @@ public class MinijuegoManager : MonoBehaviour
     public void ActivarMinijuego()
     {
         panelMinijuego.SetActive(true);
+        InstanciarLetrasIniciales();
     }
 
     private void FinalizarMinijuego()
@@ -155,6 +160,7 @@ public class MinijuegoManager : MonoBehaviour
             if (espacio.transform.childCount > 0)
                 Destroy(espacio.transform.GetChild(0).gameObject);
         }
+        InstanciarLetrasIniciales();
     }
 
     private IEnumerator CerrarMinijuego()
@@ -168,7 +174,7 @@ public class MinijuegoManager : MonoBehaviour
         if (instancia != null)
         {
             instancia.SumarEstrellaMinijuego();
-            Debug.Log("⭐ Estrella sumada correctamente desde el kiosko.");
+            Debug.Log("Estrella sumada correctamente desde el kiosko.");
 
             // Reproducir sonido de estrella
             if (MinijuegoAudio.Instancia != null)
@@ -178,7 +184,7 @@ public class MinijuegoManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("❌ No se encontró GameManagerP en la escena. No se pudo sumar estrella.");
+            Debug.LogError("No se encontró GameManagerP en la escena. No se pudo sumar estrella.");
         }
 
         // Cerrar panel de minijuego
@@ -187,6 +193,23 @@ public class MinijuegoManager : MonoBehaviour
         // Resetear flag
         lapiceraSeleccionada = false;
 
-        Debug.Log("🧩 Panel del minijuego cerrado correctamente.");
+        Debug.Log("Panel del minijuego cerrado correctamente.");
     }
+
+    private void InstanciarLetrasIniciales()
+    {
+        foreach (Transform hijo in contenedorLetras)
+        {
+            Destroy(hijo.gameObject); //Si ya hay letras
+        }
+
+        foreach (GameObject prefabLetra in prefabsLetras)
+        {
+            GameObject letra = Instantiate(prefabLetra, contenedorLetras);
+            letra.name = prefabLetra.name; //Aseguramos que mantenga su nombre (por la validación con .name[0])
+        }
+        Debug.Log("Letras instanciadas para nuevo intento.");
+
+    }
+
 }

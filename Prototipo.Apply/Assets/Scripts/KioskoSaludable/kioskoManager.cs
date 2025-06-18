@@ -199,6 +199,7 @@ public class KioskoSaludableManager : MonoBehaviour
         {
             Debug.LogWarning("⚠️ No se asignó el panelKioskoPrincipal en el Inspector.");
         }
+        EstadoMinijuego.minijuegoKioskoSaludableCompletado = true;
     }
 
 
@@ -212,7 +213,9 @@ public class KioskoSaludableManager : MonoBehaviour
             audioManager.PlayBotonClick();
         }
 
-        ActualizarUIInicial();
+        dineroDisponible = 4000;
         productoSeleccionado = null;
+        ActualizarUIInicial();
+        
     }
 }
