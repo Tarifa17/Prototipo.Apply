@@ -69,48 +69,62 @@ public class MinijuegoManager : MonoBehaviour
 
     private void ValidarPalabra()
     {
+        string palabraCorrecta = "LAPICERA";
         string palabraFormada = "";
+        int consonanteIndex = 0;
 
-        foreach (Dropeable espacio in espaciosVacios) //Recorremos la lista de espacios vacios
+        char[] plantilla = { 'L', 'A', 'P', 'I', 'C', 'E', 'R', 'A' };
+
+        for (int i = 0; i < plantilla.Length; i++)
         {
-            if (espacio.transform.childCount > 0)
+            if (EsConsonante(plantilla[i]))
             {
-                palabraFormada += espacio.transform.GetChild(0).name[0]; //Como nuestros prefabs se llaman "L, A , P..." le asignamos estos nombres a cada variable
+                if (consonanteIndex >= espaciosVacios.Count)
+                {
+                    Debug.LogError("❌ Faltan espacios vacíos para validar todas las consonantes.");
+                    return;
+                }
+
+                Dropeable espacio = espaciosVacios[consonanteIndex];
+
+                if (espacio.transform.childCount > 0)
+                {
+                    palabraFormada += espacio.transform.GetChild(0).name[0];
+                }
+                else
+                {
+                    Debug.Log("❌ No todas las letras fueron colocadas");
+
+                    if (MinijuegoAudio.Instancia != null)
+                        MinijuegoAudio.Instancia.SonidoError();
+
+                    return;
+                }
+
+                consonanteIndex++;
             }
             else
             {
-                Debug.Log("No todas las letras fueron colocadas");
-
-                // Reproducir sonido de error
-                if (MinijuegoAudio.Instancia != null)
-                {
-                    MinijuegoAudio.Instancia.SonidoError();
-                }
-                return;
+                // Agregar vocal directamente (ya está puesta visualmente en UI)
+                palabraFormada += plantilla[i];
             }
         }
 
         if (palabraFormada == palabraCorrecta)
         {
-            Debug.Log("¡Palabra correcta!");
+            Debug.Log("✅ ¡Palabra correcta!");
 
-            // Reproducir sonido de éxito
             if (MinijuegoAudio.Instancia != null)
-            {
                 MinijuegoAudio.Instancia.SonidoPalabraCorrecta();
-            }
 
             panelLapiceras.SetActive(true);
         }
         else
         {
-            Debug.Log("Palabra incorrecta");
+            Debug.Log("❌ Palabra incorrecta");
 
-            // Reproducir sonido de error
             if (MinijuegoAudio.Instancia != null)
-            {
                 MinijuegoAudio.Instancia.SonidoPalabraIncorrecta();
-            }
 
             panelIncorrecto.SetActive(true);
         }
@@ -209,7 +223,11 @@ public class MinijuegoManager : MonoBehaviour
             letra.name = prefabLetra.name; //Aseguramos que mantenga su nombre (por la validación con .name[0])
         }
         Debug.Log("Letras instanciadas para nuevo intento.");
-
+    }
+    private bool EsConsonante(char letra)
+    {
+        letra = char.ToUpper(letra);
+        return !"AEIOU".Contains(letra);
     }
 
 }
