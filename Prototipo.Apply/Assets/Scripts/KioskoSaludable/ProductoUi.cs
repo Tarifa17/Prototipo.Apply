@@ -10,15 +10,15 @@ public class ProductoUI : MonoBehaviour
     [SerializeField] private Button botonSeleccionar;
 
     private KioskoSaludableManager kioskoManager;
-    private KioskoAudioManager audioManager;
+    private AudioManager audioManager;
 
     private void Start()
     {
         // Obtener referencia al KioskoManager
         kioskoManager = FindObjectOfType<KioskoSaludableManager>();
 
-        // Obtener referencia al audio manager
-        audioManager = KioskoAudioManager.Instance;
+        // Obtener referencia al audio manager unificado
+        audioManager = AudioManager.Instancia;
 
         // Configurar UI
         if (textoNombre != null)
@@ -36,7 +36,7 @@ public class ProductoUI : MonoBehaviour
         // Reproducir sonido de clic
         if (audioManager != null)
         {
-            audioManager.PlayBotonClick();
+            audioManager.PlayButtonClickSound(); // Método del AudioManager unificado
         }
 
         if (kioskoManager != null)

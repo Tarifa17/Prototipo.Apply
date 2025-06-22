@@ -1,62 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AgarrarObjeto : MonoBehaviour
+public class AgarrarObjetoUniversal : MonoBehaviour
 {
-    [SerializeField] private GameObject puntoAgarre; // Punto de agarre del objeto
-    private GameObject objetoAgarrado = null; // Objeto actualmente agarrado
-    private GameManager gameManager; // Referencia al GameManager
+    [SerializeField] private GameObject puntoAgarre; // Punto donde se agarra el objeto
+    private GameObject objetoAgarrado = null;
+
+    private MonoBehaviour gameManager; // Puede ser GameManager o GameManagerP
 
     private void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        // Detectar si existe un GameManager común o variante
+        gameManager = (MonoBehaviour)FindObjectOfType<GameManager>() ?? (MonoBehaviour)FindObjectOfType<GameManagerP>();
     }
 
     void Update()
     {
-        if (gameManager.JuegoGanado) return; // Si el juego fue ganado, detiene la l�gica
+        if (JuegoGanado()) return;
 
-        if (objetoAgarrado != null)
+        if (objetoAgarrado != null && Input.GetKey("q"))
         {
-            if (Input.GetKey("q")) // Soltar el objeto al presionar "Q"
-            {
-                Rigidbody2D rb = objetoAgarrado.GetComponent<Rigidbody2D>();
-                if (rb != null)
-                {
-                    rb.isKinematic = false; // Deja de ser kinem�tico
-                }
+            Rigidbody2D rb = objetoAgarrado.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.isKinematic = false;
 
-                objetoAgarrado.transform.SetParent(null); // Quitar el objeto del punto de agarre
-                objetoAgarrado = null;
+            objetoAgarrado.transform.SetParent(null);
+            objetoAgarrado = null;
 
-                // Reproducir sonido de soltar
-                AudioManager.Instancia.PlayDropSound();
-            }
+            AudioManager.Instancia?.PlayDropSound();
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (gameManager.JuegoGanado) return; // Si el juego fue ganado, detiene la l�gica
+        if (JuegoGanado()) return;
 
-        if (other.gameObject.CompareTag("Objetos")) // Detecta objetos con el tag "Objetos"
+        if (other.CompareTag("Objetos") && Input.GetKey("e") && objetoAgarrado == null)
         {
-            if (Input.GetKey("e") && objetoAgarrado == null) // Agarrar el objeto al presionar "E"
+            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.isKinematic = true;
+
+            other.transform.position = puntoAgarre.transform.position;
+            other.transform.SetParent(puntoAgarre.transform);
+            objetoAgarrado = other.gameObject;
+
+            AudioManager.Instancia?.PlayGrabSound();
+
+            ObjetosEnum tipoObjeto = objetoAgarrado.GetComponent<ObjetosEnum>();
+            if (tipoObjeto != null)
             {
-                Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-                if (rb != null)
+                AudioClip clip = AudioManager.Instancia?.ObtenerClipPorTipoTarea(tipoObjeto.Tipo);
+                if (clip != null)
                 {
-                    rb.isKinematic = true; // Hacer el objeto kinem�tico
+                    AudioManager.Instancia.PlaySoundConFade(clip);
                 }
-
-                other.transform.position = puntoAgarre.transform.position; // Mover al punto de agarre
-                other.transform.SetParent(puntoAgarre.transform); // Hacer hijo del punto de agarre
-                objetoAgarrado = other.gameObject; // Guardar el objeto como agarrado
-
-                // Reproducir sonido de agarrar
-                AudioManager.Instancia.PlayGrabSound();
             }
         }
+    }
+
+    private bool JuegoGanado()
+    {
+        if (gameManager == null) return false;
+
+        if (gameManager is GameManager gm) return gm.JuegoGanado;
+        if (gameManager is GameManagerP gmp) return gmp.JuegoGanado;
+
+        return false;
     }
 }

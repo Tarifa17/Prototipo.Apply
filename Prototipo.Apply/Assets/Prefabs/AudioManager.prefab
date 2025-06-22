@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6034258339220179243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6317645168071369715}
+  - component: {fileID: 1331694302233492095}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6317645168071369715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6034258339220179243}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1331694302233492095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6034258339220179243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c2aa1c8ae10814eaee4f25fcbc7636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabSound: {fileID: 0}
+  dropSound: {fileID: 0}
+  errorSound: {fileID: 0}
+  buttonClickSound: {fileID: 0}
+  starEarnedSound: {fileID: 0}
+  backgroundMusicSampleScene: {fileID: 0}
+  backgroundMusicIntro: {fileID: 0}
+  backgroundMusicEscuela: {fileID: 0}
+  backgroundMusicParque: {fileID: 0}
+  voiceHintSampleScene: {fileID: 0}
+  voiceHintIntro: {fileID: 0}
+  voiceHintEscuela: {fileID: 0}
+  sonidoMochila: {fileID: 0}
+  sonidoRopaSucia: {fileID: 0}
+  sonidoAlmohada: {fileID: 0}
+  sonidoBasura: {fileID: 0}
+  sonidoFlor: {fileID: 0}

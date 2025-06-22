@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MinijuegoManager : MonoBehaviour
@@ -14,9 +13,10 @@ public class MinijuegoManager : MonoBehaviour
     [SerializeField] private GameObject panelIncorrecto;
     [SerializeField] private Button botonReintentar;
 
-    [SerializeField] private Transform contenedorLetras; 
-    [SerializeField] private List<GameObject> prefabsLetras; 
+    [SerializeField] private Transform contenedorLetras;
+    [SerializeField] private List<GameObject> prefabsLetras;
 
+    [SerializeField] private GameObject canvasFinal; // Panel o canvas que se muestra al terminar
 
     [Header("Configuración")]
     [SerializeField] private float tiempoEspera = 5f;
@@ -39,9 +39,11 @@ public class MinijuegoManager : MonoBehaviour
         panelLapiceras.SetActive(false);
         panelCorrecto.SetActive(false);
         panelIncorrecto.SetActive(false);
+
+        if (canvasFinal != null)
+            canvasFinal.SetActive(false);
     }
 
-    // Método para agregar sonido de click a cualquier botón
     private void AddButtonClickSound(Button boton)
     {
         if (boton != null)
@@ -69,7 +71,6 @@ public class MinijuegoManager : MonoBehaviour
 
     private void ValidarPalabra()
     {
-        string palabraCorrecta = "LAPICERA";
         string palabraFormada = "";
         int consonanteIndex = 0;
 
@@ -105,7 +106,6 @@ public class MinijuegoManager : MonoBehaviour
             }
             else
             {
-                // Agregar vocal directamente (ya está puesta visualmente en UI)
                 palabraFormada += plantilla[i];
             }
         }
@@ -139,11 +139,8 @@ public class MinijuegoManager : MonoBehaviour
         {
             Debug.Log("¡Correcto! Elegiste la lapicera azul.");
 
-            // Reproducir sonido de éxito
             if (MinijuegoAudio.Instancia != null)
-            {
                 MinijuegoAudio.Instancia.SonidoLapiceraCorrecta();
-            }
 
             panelCorrecto.SetActive(true);
 
@@ -153,11 +150,8 @@ public class MinijuegoManager : MonoBehaviour
         {
             Debug.Log("Lapicera incorrecta. El NPC quería la azul.");
 
-            // Reproducir sonido de error
             if (MinijuegoAudio.Instancia != null)
-            {
                 MinijuegoAudio.Instancia.SonidoLapiceraIncorrecta();
-            }
 
             panelIncorrecto.SetActive(true);
         }
@@ -190,44 +184,41 @@ public class MinijuegoManager : MonoBehaviour
             instancia.SumarEstrellaMinijuego();
             Debug.Log("Estrella sumada correctamente desde el kiosko.");
 
-            // Reproducir sonido de estrella
             if (MinijuegoAudio.Instancia != null)
-            {
                 MinijuegoAudio.Instancia.SonidoEstrella();
-            }
         }
         else
         {
             Debug.LogError("No se encontró GameManagerP en la escena. No se pudo sumar estrella.");
         }
 
-        // Cerrar panel de minijuego
         panelMinijuego.SetActive(false);
-
-        // Resetear flag
         lapiceraSeleccionada = false;
 
         Debug.Log("Panel del minijuego cerrado correctamente.");
+
+        if (canvasFinal != null)
+            canvasFinal.SetActive(true);
     }
 
     private void InstanciarLetrasIniciales()
     {
         foreach (Transform hijo in contenedorLetras)
         {
-            Destroy(hijo.gameObject); //Si ya hay letras
+            Destroy(hijo.gameObject);
         }
 
         foreach (GameObject prefabLetra in prefabsLetras)
         {
             GameObject letra = Instantiate(prefabLetra, contenedorLetras);
-            letra.name = prefabLetra.name; //Aseguramos que mantenga su nombre (por la validación con .name[0])
+            letra.name = prefabLetra.name;
         }
         Debug.Log("Letras instanciadas para nuevo intento.");
     }
+
     private bool EsConsonante(char letra)
     {
         letra = char.ToUpper(letra);
         return !"AEIOU".Contains(letra);
     }
-
 }

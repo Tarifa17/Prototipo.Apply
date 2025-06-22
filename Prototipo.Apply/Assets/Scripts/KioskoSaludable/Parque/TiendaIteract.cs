@@ -22,6 +22,7 @@ public class TiendaIteract : MonoBehaviour
         {
             canvasKiosko.SetActive(false);
         }
+        EstadoMinijuego.minijuegoKioskoSaludableCompletado = false;
     }
 
     private void Update()
@@ -38,14 +39,21 @@ public class TiendaIteract : MonoBehaviour
             {
                 audioSource.PlayOneShot(interactSound);
             }
-            if (canvasKiosko != null)
+        if (canvasKiosko != null)
+        {
+            canvasKiosko.SetActive(true);
+
+            // Llamar a AbrirKiosko en el AudioManager
+            AudioManager audioManager = AudioManager.Instancia;
+            if (audioManager != null)
             {
-                canvasKiosko.SetActive(true);
+                audioManager.AbrirKiosko();
             }
             else
             {
-                Debug.LogWarning("Panel del kiosko no asignado en el Inspector.");
+                Debug.LogWarning("AudioManager no encontrado al abrir el kiosko.");
             }
+        }
         }
     }
 
