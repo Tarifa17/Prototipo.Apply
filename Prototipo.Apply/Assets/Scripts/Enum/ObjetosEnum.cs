@@ -9,7 +9,9 @@ public enum TipoTarea
     RopaSucia,
     Almohada,
     Matematica,
-    Pregunta
+    Pregunta,
+    Basura,
+    Flor
 }
 
 public class ObjetosEnum : MonoBehaviour

@@ -5,17 +5,16 @@ public class BotonReinicio : MonoBehaviour
 {
     private Button botonReinicio;
     private KioskoSaludableManager kioskoManager;
-    private KioskoAudioManager audioManager;
+    private AudioManager audioManager;
 
     private void Start()
     {
         kioskoManager = FindObjectOfType<KioskoSaludableManager>();
         botonReinicio = GetComponent<Button>();
-        audioManager = KioskoAudioManager.Instance;
+        audioManager = AudioManager.Instancia;
 
         if (botonReinicio != null && kioskoManager != null)
         {
-            // Añadir primero la reproducción de sonido y luego el reinicio
             botonReinicio.onClick.AddListener(ClickReinicio);
         }
         else
@@ -26,13 +25,11 @@ public class BotonReinicio : MonoBehaviour
 
     private void ClickReinicio()
     {
-        // Reproducir sonido de clic
         if (audioManager != null)
         {
-            audioManager.PlayBotonClick();
+            audioManager.PlayButtonClickSound(); // Ya adaptado en AudioManager
         }
 
-        // Reiniciar el kiosko
         kioskoManager.ReiniciarKiosko();
     }
 }
