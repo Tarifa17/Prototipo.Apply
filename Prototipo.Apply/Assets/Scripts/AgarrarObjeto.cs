@@ -26,6 +26,9 @@ public class AgarrarObjetoUniversal : MonoBehaviour
             objetoAgarrado = null;
 
             AudioManager.Instancia?.PlayDropSound();
+
+            FlechaDestinoManager.Instancia?.OcultarFlechaDestino();
+
         }
     }
 
@@ -52,6 +55,7 @@ public class AgarrarObjetoUniversal : MonoBehaviour
                 {
                     AudioManager.Instancia.PlaySoundConFade(clip);
                 }
+                FlechaDestinoManager.Instancia?.MostrarFlechaDestino(tipoObjeto.Tipo);
             }
         }
     }

@@ -8,6 +8,8 @@ public class Contenedores : MonoBehaviour
     private GameObject objetoActual = null; // Objeto actualmente dentro del contenedor
     private GameManager gameManager; // Referencia al GameManager
 
+    public TipoTarea Tipo { get => tipo; set => tipo = value; }
+
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>(); // Buscar el GameManager en la escena

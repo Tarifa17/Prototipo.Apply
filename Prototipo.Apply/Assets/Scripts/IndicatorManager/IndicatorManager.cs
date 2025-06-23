@@ -5,7 +5,7 @@ using UnityEngine;
 public class IndicatorManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> flechas; //Flechas a mostrar
-    [SerializeField] private float duracionMostrar = 5f; // Variable para los segundos
+    [SerializeField] private float duracionMostrar = 10f; // Variable para los segundos
     [SerializeField] private bool mostrarAlInicio = true; //Variable para marcar el inicio del juego
 
     private void Start()
