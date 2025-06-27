@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 54fc56cd3fc9189409ba75a7e2250700
+guid: 140e95adc643a2c4b8dd5a278e4fd1d0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: abecedario_0
+      name: abecedario-new_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df9a9117a3ef6df468cd01b0d65d8080
-      internalID: -1134946080
+      spriteID: 2bab1f93ba96ad348a5fca83d5b79d4d
+      internalID: -1201100900
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_1
+      name: abecedario-new_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08eb26b56dc43944286e324b8bc59630
-      internalID: 1982587028
+      spriteID: 8827eee9e3ec7fe4c85847f409e841fb
+      internalID: -1858330182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_2
+      name: abecedario-new_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d058e2100bedf34f9cb588ef6042482
-      internalID: 1282316160
+      spriteID: 90cbe7df222924f4f931a9243a59c9c2
+      internalID: -2119800633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_3
+      name: abecedario-new_3
       rect:
         serializedVersion: 2
         x: 96
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12125d627b4bf4049bdcf4494db3c8ae
-      internalID: -1388534981
+      spriteID: 7a7b7e8806d63a941aa9fe23f3171cfd
+      internalID: -1943995687
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_4
+      name: abecedario-new_4
       rect:
         serializedVersion: 2
         x: 128
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b591caf9acd6694e9abb9e1b0474d4f
-      internalID: 1526694732
+      spriteID: 7d1f5fdf60425ea4f95167e0467c8b18
+      internalID: 2021723642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_5
+      name: abecedario-new_5
       rect:
         serializedVersion: 2
         x: 160
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61b561669df6f6f42bc10fb75af3e6ab
-      internalID: -1356144080
+      spriteID: 350539fd5e7be684b970da748c9f8c31
+      internalID: 998871733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_6
+      name: abecedario-new_6
       rect:
         serializedVersion: 2
         x: 192
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b472ba09a72cb2419953745cb991415
-      internalID: -2120965163
+      spriteID: 973941717e978cb41b315b0a71550afc
+      internalID: -227405960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_7
+      name: abecedario-new_7
       rect:
         serializedVersion: 2
         x: 224
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11c59a4fc79b8194e9ec1e4b203dd365
-      internalID: -1510732139
+      spriteID: 885f06c2bb1298044ac4255d4af26846
+      internalID: 234190035
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_8
+      name: abecedario-new_8
       rect:
         serializedVersion: 2
         x: 256
@@ -292,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c3e10b64a53ffa469ceb47db7721234
-      internalID: -45703455
+      spriteID: ed8f7f1acd4206942b15c830862aefc9
+      internalID: 636172680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_9
+      name: abecedario-new_9
       rect:
         serializedVersion: 2
         x: 288
@@ -313,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9650b95ca4ce47f46b47946cc2defbe8
-      internalID: 1209388877
+      spriteID: fc51ab3f7d81f2a47b256368a6394fe8
+      internalID: -91539139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_10
+      name: abecedario-new_10
       rect:
         serializedVersion: 2
         x: 0
@@ -334,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0bfb6ab7bf2cb144493a26e1aaa7845f
-      internalID: -239307787
+      spriteID: 233c13a2241ad21418f13fd78142b32b
+      internalID: 520149517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_11
+      name: abecedario-new_11
       rect:
         serializedVersion: 2
         x: 32
@@ -355,14 +355,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61f313a8144f897418dde15530a68525
-      internalID: 1054430377
+      spriteID: 0677fa9f6693242409d2192ddac55029
+      internalID: 1898626411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_12
+      name: abecedario-new_12
       rect:
         serializedVersion: 2
         x: 64
@@ -376,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79140176bb4b57b4cb14c2ef24875417
-      internalID: 2102292670
+      spriteID: 8a00da11d25479c4a9ca5fd042aaaa8a
+      internalID: -1230097253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_13
+      name: abecedario-new_13
       rect:
         serializedVersion: 2
         x: 96
@@ -397,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77526a32d6e3c1e42bb221b59fbf1a55
-      internalID: -1938787179
+      spriteID: dfb84e51e5d846d4c98ed10906ffa096
+      internalID: 926805371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_14
+      name: abecedario-new_14
       rect:
         serializedVersion: 2
         x: 128
@@ -418,14 +418,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f25c36992da4bfa4684b08d44216005b
-      internalID: 1203613083
+      spriteID: 76953a3ff05fd2e4d9b29037c6eb54f0
+      internalID: 320540553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_15
+      name: abecedario-new_15
       rect:
         serializedVersion: 2
         x: 160
@@ -439,14 +439,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f19685c9ba1487a4da990b7e407ee2e8
-      internalID: 502531317
+      spriteID: fceba86c5149b4245bc6fd19d2a5a88c
+      internalID: 83017730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_16
+      name: abecedario-new_16
       rect:
         serializedVersion: 2
         x: 192
@@ -460,14 +460,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 144025503380a744c901bb92ecf45229
-      internalID: -807911940
+      spriteID: c232921773dcb584d9632aa33172ad56
+      internalID: 1901514873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_17
+      name: abecedario-new_17
       rect:
         serializedVersion: 2
         x: 224
@@ -481,14 +481,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dd8d638c1ebd114488e00355a700607
-      internalID: -209454874
+      spriteID: c3c7f7ca6403d7842a294ad1929df470
+      internalID: -73716535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_18
+      name: abecedario-new_18
       rect:
         serializedVersion: 2
         x: 256
@@ -502,14 +502,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed7983495b773a042ad4e519f4792914
-      internalID: 1563428158
+      spriteID: 8a4a733891c46bd438bb0036fe83a742
+      internalID: 1517870121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_19
+      name: abecedario-new_19
       rect:
         serializedVersion: 2
         x: 288
@@ -523,14 +523,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f0345f54e9dee44eaf583265ef4c416
-      internalID: 1147656704
+      spriteID: c2ff625969ee4414da2a1772942cfea7
+      internalID: -902746358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_20
+      name: abecedario-new_20
       rect:
         serializedVersion: 2
         x: 0
@@ -544,14 +544,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3433bc7c5438924d9b28ed1d413f609
-      internalID: -443161237
+      spriteID: c041890db4d39ad46a93965eb8dbf62a
+      internalID: -1667431582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_21
+      name: abecedario-new_21
       rect:
         serializedVersion: 2
         x: 32
@@ -565,14 +565,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49af0f1ea997959449550911adc53637
-      internalID: 689906736
+      spriteID: f716377d1fe7c3649afe06743d833c17
+      internalID: 1440010820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_22
+      name: abecedario-new_22
       rect:
         serializedVersion: 2
         x: 64
@@ -586,14 +586,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b56c14d9d9805e41bd91c60591735ab
-      internalID: 407826013
+      spriteID: 7ddcba8eadfeb0842a7320b42e9ed2a8
+      internalID: -1023111119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_23
+      name: abecedario-new_23
       rect:
         serializedVersion: 2
         x: 96
@@ -607,14 +607,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7193973018d8aaf45be603d0077b5d9d
-      internalID: 1356517723
+      spriteID: 19f9afea4262c1c43ae46cd077355f75
+      internalID: 833133497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_24
+      name: abecedario-new_24
       rect:
         serializedVersion: 2
         x: 128
@@ -628,14 +628,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01c4782825c47da4c99fbb7a7200df44
-      internalID: -1101790871
+      spriteID: 965fee94360ea51439c1c879cee750ef
+      internalID: 546335653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_25
+      name: abecedario-new_25
       rect:
         serializedVersion: 2
         x: 160
@@ -649,14 +649,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a611b0a6fccea07469801eae7140256c
-      internalID: -907815228
+      spriteID: d8bda010ef1cfa74d8e0845b2c6dd8d5
+      internalID: -876021524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abecedario_26
+      name: abecedario-new_26
       rect:
         serializedVersion: 2
         x: 192
@@ -670,8 +670,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99586620d8834544b8e54861221ace1a
-      internalID: -1234116635
+      spriteID: 48d805f4d39d155449eeeef34659c280
+      internalID: -1466476663
       vertices: []
       indices: 
       edges: []
@@ -687,33 +687,33 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      abecedario_0: -1134946080
-      abecedario_1: 1982587028
-      abecedario_10: -239307787
-      abecedario_11: 1054430377
-      abecedario_12: 2102292670
-      abecedario_13: -1938787179
-      abecedario_14: 1203613083
-      abecedario_15: 502531317
-      abecedario_16: -807911940
-      abecedario_17: -209454874
-      abecedario_18: 1563428158
-      abecedario_19: 1147656704
-      abecedario_2: 1282316160
-      abecedario_20: -443161237
-      abecedario_21: 689906736
-      abecedario_22: 407826013
-      abecedario_23: 1356517723
-      abecedario_24: -1101790871
-      abecedario_25: -907815228
-      abecedario_26: -1234116635
-      abecedario_3: -1388534981
-      abecedario_4: 1526694732
-      abecedario_5: -1356144080
-      abecedario_6: -2120965163
-      abecedario_7: -1510732139
-      abecedario_8: -45703455
-      abecedario_9: 1209388877
+      abecedario-new_0: -1201100900
+      abecedario-new_1: -1858330182
+      abecedario-new_10: 520149517
+      abecedario-new_11: 1898626411
+      abecedario-new_12: -1230097253
+      abecedario-new_13: 926805371
+      abecedario-new_14: 320540553
+      abecedario-new_15: 83017730
+      abecedario-new_16: 1901514873
+      abecedario-new_17: -73716535
+      abecedario-new_18: 1517870121
+      abecedario-new_19: -902746358
+      abecedario-new_2: -2119800633
+      abecedario-new_20: -1667431582
+      abecedario-new_21: 1440010820
+      abecedario-new_22: -1023111119
+      abecedario-new_23: 833133497
+      abecedario-new_24: 546335653
+      abecedario-new_25: -876021524
+      abecedario-new_26: -1466476663
+      abecedario-new_3: -1943995687
+      abecedario-new_4: 2021723642
+      abecedario-new_5: 998871733
+      abecedario-new_6: -227405960
+      abecedario-new_7: 234190035
+      abecedario-new_8: 636172680
+      abecedario-new_9: -91539139
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
