@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6034258339220179243
+--- !u!1 &4509915944090607590
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6317645168071369715}
-  - component: {fileID: 1331694302233492095}
+  - component: {fileID: 29658279586248601}
+  - component: {fileID: 6808631666912829803}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -17,47 +17,53 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6317645168071369715
+--- !u!4 &29658279586248601
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6034258339220179243}
+  m_GameObject: {fileID: 4509915944090607590}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.19936568, y: -0.19394028, z: -0.04161826}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1331694302233492095
+--- !u!114 &6808631666912829803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6034258339220179243}
+  m_GameObject: {fileID: 4509915944090607590}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3c2aa1c8ae10814eaee4f25fcbc7636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabSound: {fileID: 0}
-  dropSound: {fileID: 0}
-  errorSound: {fileID: 0}
-  buttonClickSound: {fileID: 0}
-  starEarnedSound: {fileID: 0}
-  backgroundMusicSampleScene: {fileID: 0}
-  backgroundMusicIntro: {fileID: 0}
-  backgroundMusicEscuela: {fileID: 0}
-  backgroundMusicParque: {fileID: 0}
-  voiceHintSampleScene: {fileID: 0}
+  grabSound: {fileID: 8300000, guid: 0e30036e04dae7940b544af6b805f226, type: 3}
+  dropSound: {fileID: 8300000, guid: cb83ad181901fb647a499d96564f6868, type: 3}
+  errorSound: {fileID: 8300000, guid: af29e5ec05eecb049b32f2c637ccc9dd, type: 3}
+  buttonClickSound: {fileID: 8300000, guid: cc763a4c5c2517b44a66dc2f3453cedd, type: 3}
+  starEarnedSound: {fileID: 8300000, guid: f48313378358e7046bed846373873090, type: 3}
+  backgroundMusicSampleScene: {fileID: 8300000, guid: 8cb23d8e9de79034da9b5453700a8879, type: 3}
+  backgroundMusicIntro: {fileID: 8300000, guid: ce0cd146973d9044ba2a0c0ae1bff75c, type: 3}
+  backgroundMusicEscuela: {fileID: 8300000, guid: b18bccb7606a5784180ea2ad03f2285c, type: 3}
+  backgroundMusicParque: {fileID: 8300000, guid: b1f3f095e8ce2fa4eb79e6d47fbbe0a5, type: 3}
+  backgroundMusicKiosko: {fileID: 8300000, guid: aab4684a94a212d46812c0c3eebcf8f3, type: 3}
+  voiceHintSampleScene: {fileID: 8300000, guid: 96a507f7bc77b3e4780328679a549439, type: 3}
   voiceHintIntro: {fileID: 0}
-  voiceHintEscuela: {fileID: 0}
-  sonidoMochila: {fileID: 0}
-  sonidoRopaSucia: {fileID: 0}
-  sonidoAlmohada: {fileID: 0}
-  sonidoBasura: {fileID: 0}
+  voiceHintEscuela: {fileID: 8300000, guid: a89a54799833bf245a91f3c4ce1b3886, type: 3}
+  kioskoTutorialVoice: {fileID: 8300000, guid: 3b9df4ee133e1b24eafed0f5904220e5, type: 3}
+  sonidoMochila: {fileID: 8300000, guid: b97534a865cd65f4895f577a67634180, type: 3}
+  sonidoRopaSucia: {fileID: 8300000, guid: ab3b68d6c03e0c54b8fda9da8b2866d8, type: 3}
+  sonidoAlmohada: {fileID: 8300000, guid: 12423fc1820a03a47a42732d29d3f653, type: 3}
+  sonidoBasura: {fileID: 8300000, guid: b43e7e9fb63027c4294c804843070400, type: 3}
   sonidoFlor: {fileID: 0}
+  productoSeleccionadoSound: {fileID: 8300000, guid: cc763a4c5c2517b44a66dc2f3453cedd, type: 3}
+  compraExitosaSound: {fileID: 8300000, guid: 6b2490f663bb46a4bb0d4f900042cadd, type: 3}
+  compraIncorrectaSound: {fileID: 8300000, guid: 9e3be0e3c4650af4f8409bd34c301d68, type: 3}
+  vueltoSound: {fileID: 0}
