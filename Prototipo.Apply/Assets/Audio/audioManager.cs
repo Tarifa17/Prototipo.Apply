@@ -42,8 +42,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource sfxSource;
     private AudioSource musicSource;
     private AudioSource voiceSource;
-
-    private float originalMainMusicVolume;
+    public AudioSource GetVoiceSource() => voiceSource;
     private bool kioskoAbierto = false;
 
     private void Awake()
@@ -106,7 +105,7 @@ public class AudioManager : MonoBehaviour
         {
             musicSource.Stop();
             musicSource.clip = nuevaMusica;
-            musicSource.volume = 0.4f;
+            musicSource.volume = nombreEscena == "SampleScene" ? 1.0f : 0.4f;
             musicSource.Play();
         }
     }
@@ -118,12 +117,17 @@ public class AudioManager : MonoBehaviour
             "SampleScene" => voiceHintSampleScene,
             "MainMenu" => voiceHintIntro,
             "Escuela" => voiceHintEscuela,
-            "Parque" => null,
+            "Parque" => kioskoTutorialVoice,
             _ => null
         };
 
         if (voiceHint != null)
             StartCoroutine(FadeOutMusicAndPlayHint(voiceHint));
+    }
+    private IEnumerator ReproducirVoiceHintSeguro(AudioClip clip)
+    {
+        yield return new WaitForSeconds(0.1f);
+        yield return StartCoroutine(FadeOutMusicAndPlayHint(clip));
     }
 
     public void PlayGrabSound() => sfxSource.PlayOneShot(grabSound);
@@ -242,4 +246,20 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource GetMusicSource() => musicSource;
     public void AjustarVolumenMusica(float nuevoVolumen) => musicSource.volume = nuevoVolumen;
+
+    public void RepetirVoiceHintActual()
+    {
+        string escena = SceneManager.GetActiveScene().name;
+        AudioClip hint = escena switch
+        {
+            "SampleScene" => voiceHintSampleScene,
+            "MainMenu" => voiceHintIntro,
+            "Escuela" => voiceHintEscuela,
+            "Parque" => kioskoTutorialVoice,
+            _ => null
+        };
+
+        if (hint != null)
+            PlaySoundConFade(hint);
+    }
 }

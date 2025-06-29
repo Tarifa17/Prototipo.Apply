@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class TiendaIteract : MonoBehaviour
 {
-    [SerializeField] private AudioClip interactSound;
     [SerializeField] private GameObject canvasKiosko;
     private AudioSource audioSource;
     private bool jugadorEnRango = false;
@@ -33,11 +32,6 @@ public class TiendaIteract : MonoBehaviour
             {
                 Debug.Log("El minijuego del kiosko saludable ya fue completado.");
                 return;
-            }
-            // Reproducir sonido de interacci�n
-            if (interactSound != null && audioSource != null)
-            {
-                audioSource.PlayOneShot(interactSound);
             }
         if (canvasKiosko != null)
         {
