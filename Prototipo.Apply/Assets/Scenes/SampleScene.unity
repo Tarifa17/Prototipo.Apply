@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc775bc9647ef47449d94ce5e70bf48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 5
+  tipo: 4
 --- !u!61 &40646445
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1057,7 +1057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7fff6dacf23e84a88ae7e5c5dae746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 5
+  tipo: 4
 --- !u!50 &125884989
 Rigidbody2D:
   serializedVersion: 4

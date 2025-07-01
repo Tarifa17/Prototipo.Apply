@@ -24,6 +24,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip voiceHintSampleScene;
     [SerializeField] private AudioClip voiceHintIntro;
     [SerializeField] private AudioClip voiceHintEscuela;
+    [SerializeField] private AudioClip voiceHintParque;
     [SerializeField] private AudioClip kioskoTutorialVoice; // Nueva
 
     [Header("SFX por Tipo de Tarea")]
@@ -32,6 +33,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip sonidoAlmohada;
     [SerializeField] private AudioClip sonidoBasura;
     [SerializeField] private AudioClip sonidoFlor;
+    [SerializeField] private AudioClip sonidoTarea;
+    [SerializeField] private AudioClip sonidoHeces;
 
     [Header("Sonidos Especiales Kiosko")]
     [SerializeField] private AudioClip productoSeleccionadoSound;
@@ -150,6 +153,8 @@ public class AudioManager : MonoBehaviour
         TipoTarea.Almohada => sonidoAlmohada,
         TipoTarea.Basura => sonidoBasura,
         TipoTarea.Flor => sonidoFlor,
+        TipoTarea.Tarea => sonidoTarea,
+        TipoTarea.Heces => sonidoHeces,
         _ => null
     };
 
@@ -186,7 +191,7 @@ public class AudioManager : MonoBehaviour
         kioskoAbierto = true;
         StartCoroutine(TransicionMusicaKiosko(true));
 
-        if (kioskoTutorialVoice != null)
+        if (voiceHintParque != null)
             StartCoroutine(PlayTutorialWithDelay(0.5f));
     }
 
@@ -226,7 +231,7 @@ public class AudioManager : MonoBehaviour
     private IEnumerator PlayTutorialWithDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        voiceSource.clip = kioskoTutorialVoice;
+        voiceSource.clip = voiceHintParque;
         voiceSource.Play();
     }
 
