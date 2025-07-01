@@ -1273,6 +1273,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6808631666912829803, guid: e255891571aa4c7459453a8ef7197727, type: 3}
+      propertyPath: sonidoFlor
+      value: 
+      objectReference: {fileID: 8300000, guid: ff29f445531df064cac91d06a0a9353f, type: 3}
+    - target: {fileID: 6808631666912829803, guid: e255891571aa4c7459453a8ef7197727, type: 3}
+      propertyPath: sonidoHeces
+      value: 
+      objectReference: {fileID: 8300000, guid: 3fcc69fab1b89624598b1bf99a090ade, type: 3}
+    - target: {fileID: 6808631666912829803, guid: e255891571aa4c7459453a8ef7197727, type: 3}
+      propertyPath: sonidoTarea
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a58cc8095cdcb34f953e89e10a1375d, type: 3}
+    - target: {fileID: 6808631666912829803, guid: e255891571aa4c7459453a8ef7197727, type: 3}
+      propertyPath: voiceHintParque
+      value: 
+      objectReference: {fileID: 8300000, guid: eec4dbff7f7a4d04b9f85563d62b8fb0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -8,10 +8,11 @@ public enum TipoTarea
     Mochila,
     RopaSucia,
     Almohada,
-    Matematica,
     Pregunta,
     Basura,
-    Flor
+    Flor,
+    Tarea,
+    Heces
 }
 
 public class ObjetosEnum : MonoBehaviour
