@@ -21,12 +21,25 @@ public class KioskoSaludableManager : MonoBehaviour
     [SerializeField] private ProductoUI[] productosUI;
 
     [Header("Configuraciones")]
-    [SerializeField] private float tiempoEspera = 5f;
+    [SerializeField] private float tiempoEspera = 3f;
 
     private int dineroDisponible = 4000;
     private Producto productoSeleccionado;
     private AudioManager audioManager;
 
+    public static KioskoSaludableManager Instancia { get; private set; }
+
+    private void Awake()
+    {
+        if (Instancia == null)
+        {
+            Instancia = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         audioManager = AudioManager.Instancia;
@@ -127,9 +140,21 @@ public class KioskoSaludableManager : MonoBehaviour
 
     private IEnumerator CerrarKioskoPanel()
     {
+        EstadoKiosko.minijuegoCompletado = true;
+
         yield return new WaitForSeconds(tiempoEspera);
 
-        EstadoKiosko.minijuegoCompletado = true;
+        if (panelKioskoPrincipal != null)
+        {
+            panelKioskoPrincipal.SetActive(false);
+        }
+
+        if (audioManager != null)
+        {
+            audioManager.CerrarKiosko();
+            yield return new WaitForSeconds(1.0f);
+            audioManager.CambiarMusicaDeFondo("Parque");
+        }
 
         GameManagerP instancia = FindObjectOfType<GameManagerP>();
         if (instancia != null)
@@ -140,13 +165,6 @@ public class KioskoSaludableManager : MonoBehaviour
         else
         {
             Debug.LogError("❌ No se encontró GameManagerP en la escena. No se pudo sumar estrella.");
-        }
-
-        if (audioManager != null)
-        {
-            audioManager.CerrarKiosko();
-            yield return new WaitForSeconds(1.0f);
-            audioManager.CambiarMusicaDeFondo("Parque"); 
         }
 
         if (panelKioskoPrincipal != null)

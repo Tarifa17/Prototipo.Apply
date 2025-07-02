@@ -2828,7 +2828,43 @@ PrefabInstance:
       objectReference: {fileID: 188904069, guid: 6ddfa6b713602e04ab47767c68d15198, type: 3}
     - target: {fileID: 2429452558921847144, guid: afb1c9d6ec64119488c2abee22705516, type: 3}
       propertyPath: m_text
-      value: 
+      value: AYUDA
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429452558921847144, guid: afb1c9d6ec64119488c2abee22705516, type: 3}
+      propertyPath: m_fontSize
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429452558921847144, guid: afb1c9d6ec64119488c2abee22705516, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429452558921847144, guid: afb1c9d6ec64119488c2abee22705516, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429452558921847144, guid: afb1c9d6ec64119488c2abee22705516, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429452558921847144, guid: afb1c9d6ec64119488c2abee22705516, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429452558921847144, guid: afb1c9d6ec64119488c2abee22705516, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429452558921847144, guid: afb1c9d6ec64119488c2abee22705516, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429452558921847144, guid: afb1c9d6ec64119488c2abee22705516, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429452558921847144, guid: afb1c9d6ec64119488c2abee22705516, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6774920519184231164, guid: afb1c9d6ec64119488c2abee22705516, type: 3}
       propertyPath: m_Name
