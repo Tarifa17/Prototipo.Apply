@@ -97,7 +97,7 @@ public class AudioManager : MonoBehaviour
     {
         AudioClip nuevaMusica = nombreEscena switch
         {
-            "SampleScene" => backgroundMusicSampleScene,
+            "Casa" => backgroundMusicSampleScene,
             "MainMenu" => backgroundMusicIntro,
             "Escuela" or "Minijuego" => backgroundMusicEscuela,
             "Parque" => backgroundMusicParque,
@@ -117,7 +117,7 @@ public class AudioManager : MonoBehaviour
     {
         AudioClip voiceHint = nombreEscena switch
         {
-            "SampleScene" => voiceHintSampleScene,
+            "Casa" => voiceHintSampleScene,
             "MainMenu" => voiceHintIntro,
             "Escuela" => voiceHintEscuela,
             "Parque" => kioskoTutorialVoice,
@@ -257,7 +257,7 @@ public class AudioManager : MonoBehaviour
         string escena = SceneManager.GetActiveScene().name;
         AudioClip hint = escena switch
         {
-            "SampleScene" => voiceHintSampleScene,
+            "Casa" => voiceHintSampleScene,
             "MainMenu" => voiceHintIntro,
             "Escuela" => voiceHintEscuela,
             "Parque" => kioskoTutorialVoice,
@@ -266,5 +266,14 @@ public class AudioManager : MonoBehaviour
 
         if (hint != null)
             PlaySoundConFade(hint);
+    }
+    public void ReproducirVozObjeto(AudioClip clip)
+    {
+        if (clip == null) return;
+
+        // No reproducir si ya hay un voice hint u otro diálogo en curso
+        if (voiceSource.isPlaying) return;
+
+        voiceSource.PlayOneShot(clip);
     }
 }

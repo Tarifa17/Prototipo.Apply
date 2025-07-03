@@ -53,7 +53,8 @@ public class AgarrarObjetoUniversal : MonoBehaviour
                 AudioClip clip = AudioManager.Instancia?.ObtenerClipPorTipoTarea(tipoObjeto.Tipo);
                 if (clip != null)
                 {
-                    AudioManager.Instancia.PlaySoundConFade(clip);
+                    AudioManager.Instancia.ReproducirVozObjeto(clip);
+
                 }
                 FlechaDestinoManager.Instancia?.MostrarFlechaDestino(tipoObjeto.Tipo);
             }
