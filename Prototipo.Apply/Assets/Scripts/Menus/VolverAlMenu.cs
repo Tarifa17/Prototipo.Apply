@@ -28,6 +28,9 @@ public class VolverAlMenu : MonoBehaviour
         if(KioskoSaludableManager.Instancia != null)
             Destroy(KioskoSaludableManager.Instancia.gameObject);
 
+        if (NombreIngresoManager.Instancia != null) 
+            Destroy(NombreIngresoManager.Instancia.gameObject);
+
         EstadoKiosko.tareasPrevias = 0;
         EstadoMinijuego.minijuegoKioskoSaludableCompletado = false;
         EstadoMinijuego.minijuegoLapiceraCompletado = false;
