@@ -10,5 +10,17 @@ public class DetectorFinalizador : MonoBehaviour
         {
             Timer.Instancia.DetenerTimer();
         }
+        string nombreJugador = NombreIngresoManager.Instancia?.NombreJugador ?? "SinNombre";
+        float tiempo = Timer.Instancia.TiempoTotal;
+
+        RegistroJugadores registro = FindObjectOfType<RegistroJugadores>();
+        if (registro != null)
+        {
+            registro.GuardarJugador(nombreJugador, tiempo);
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró el RegistroJugadores en la escena final.");
+        }
     }
 }
