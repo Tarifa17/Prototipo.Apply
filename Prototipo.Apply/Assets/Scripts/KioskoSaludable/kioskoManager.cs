@@ -16,6 +16,11 @@ public class KioskoSaludableManager : MonoBehaviour
     [SerializeField] private Button botonComprar;
     [SerializeField] private GameObject contenedorVacios;
     [SerializeField] private GameObject panelKioskoPrincipal;
+    [SerializeField] private GameObject tildePrefab;
+
+    private GameObject tildeActual; // Instancia activa de la tilde
+
+
 
     [Header("Productos")]
     [SerializeField] private ProductoUI[] productosUI;
@@ -23,6 +28,7 @@ public class KioskoSaludableManager : MonoBehaviour
     [Header("Configuraciones")]
     [SerializeField] private float tiempoEspera = 3f;
 
+    private ProductoUI productoUISeleccionado;
     private int dineroDisponible = 4000;
     private Producto productoSeleccionado;
     private AudioManager audioManager;
@@ -67,7 +73,7 @@ public class KioskoSaludableManager : MonoBehaviour
         if (contenedorVacios != null) contenedorVacios.SetActive(true);
     }
 
-    public void SeleccionarProducto(Producto producto)
+    public void SeleccionarProducto(Producto producto, Transform productoTransform)
     {
         productoSeleccionado = producto;
         textoPrecioProducto.text = $"Precio: ${producto.precio}";
@@ -77,8 +83,17 @@ public class KioskoSaludableManager : MonoBehaviour
             audioManager.PlayProductoSeleccionado();
         }
 
-        if (contenedorVacios != null)
-            contenedorVacios.SetActive(false);
+        if (tildeActual == null)
+        {
+            tildeActual = Instantiate(tildePrefab, productoTransform);
+        }
+        else
+        {
+            tildeActual.transform.SetParent(productoTransform);
+        }
+        tildeActual.transform.localPosition = Vector3.zero;
+        tildeActual.SetActive(true);
+
     }
 
     private void ComprarProducto()

@@ -8,6 +8,7 @@ public class ProductoUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoNombre;
     [SerializeField] private TextMeshProUGUI textoPrecio;
     [SerializeField] private Button botonSeleccionar;
+    [SerializeField] private GameObject tildeSeleccion;
 
     private KioskoSaludableManager kioskoManager;
     private AudioManager audioManager;
@@ -26,8 +27,10 @@ public class ProductoUI : MonoBehaviour
 
         if (textoPrecio != null)
             textoPrecio.text = $"${datosProducto.precio}";
+        if (tildeSeleccion != null)
+            tildeSeleccion.SetActive(false);
 
-        // Configurar botón
+        // Configurar botï¿½n
         botonSeleccionar.onClick.AddListener(SeleccionarEsteProducto);
     }
 
@@ -36,22 +39,29 @@ public class ProductoUI : MonoBehaviour
         // Reproducir sonido de clic
         if (audioManager != null)
         {
-            audioManager.PlayButtonClickSound(); // Método del AudioManager unificado
+            audioManager.PlayButtonClickSound(); // Mï¿½todo del AudioManager unificado
         }
 
         if (kioskoManager != null)
         {
-            kioskoManager.SeleccionarProducto(datosProducto);
+            kioskoManager.SeleccionarProducto(datosProducto, this.transform);
         }
         else
         {
-            Debug.LogError("No se encontró el KioskoSaludableManager");
+            Debug.LogError("No se encontrï¿½ el KioskoSaludableManager");
         }
     }
 
-    // Método para obtener el producto asignado
+    // Mï¿½todo para obtener el producto asignado
     public Producto GetProducto()
     {
         return datosProducto;
     }
+
+    public void MostrarTilde(bool mostrar)
+    {
+        if (tildeSeleccion != null)
+            tildeSeleccion.SetActive(mostrar);
+    }
+
 }
