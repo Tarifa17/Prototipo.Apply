@@ -25,6 +25,8 @@ public class RegistroJugadores : MonoBehaviour
         string json = JsonUtility.ToJson(datos, true);
         File.WriteAllText(ruta, json);
         Debug.Log($"✅ Jugador guardado: {nuevo.nombre} - {nuevo.tiempoTotal}");
+        Debug.Log($"📁 Ruta del archivo: {ruta}");
+
     }
 
     private void CargarDatos()
