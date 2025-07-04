@@ -1,4 +1,6 @@
-using UnityEngine;
+ï»¿using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
 
 public class VoiceHintButtonHelper : MonoBehaviour
 {
@@ -6,35 +8,40 @@ public class VoiceHintButtonHelper : MonoBehaviour
 
     public void ReproducirVoiceHint()
     {
-        if (reproduciendoHint)
+        if (AudioManager.Instancia == null)
         {
-            Debug.Log("Ya se está reproduciendo un VoiceHint.");
+            Debug.LogWarning("AudioManager no encontrado.");
             return;
         }
 
-        if (AudioManager.Instancia != null)
+        AudioSource voiceSource = AudioManager.Instancia.GetVoiceSource();
+        AudioClip hintClip = AudioManager.Instancia.ObtenerVoiceHintActual();
+
+        // Verificamos que no se estÃ© reproduciendo ya un hint
+        if (reproduciendoHint || (voiceSource != null && voiceSource.isPlaying))
         {
-            AudioSource voiceSource = AudioManager.Instancia.GetVoiceSource();
-            if (voiceSource != null && !voiceSource.isPlaying)
-            {
-                StartCoroutine(ReproducirConBloqueo(voiceSource));
-            }
-            else
-            {
-                Debug.Log("El VoiceHint ya está en reproducción.");
-            }
+            Debug.Log("VoiceHint ya en reproducciÃ³n.");
+            return;
         }
-        else
+
+        if (voiceSource == null || hintClip == null)
         {
-            Debug.LogWarning("AudioManager no encontrado al intentar reproducir el VoiceHint.");
+            Debug.LogWarning("Datos faltantes para reproducir el VoiceHint.");
+            return;
         }
+
+        StartCoroutine(ReproducirHint(voiceSource, hintClip));
     }
 
-    private System.Collections.IEnumerator ReproducirConBloqueo(AudioSource voiceSource)
+    private IEnumerator ReproducirHint(AudioSource voiceSource, AudioClip clip)
     {
         reproduciendoHint = true;
-        AudioManager.Instancia.RepetirVoiceHintActual();
-        yield return new WaitWhile(() => voiceSource.isPlaying);
+
+        voiceSource.clip = clip;
+        voiceSource.Play();
+
+        yield return new WaitForSeconds(clip.length);
+
         reproduciendoHint = false;
     }
 }

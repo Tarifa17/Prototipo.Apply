@@ -276,4 +276,18 @@ public class AudioManager : MonoBehaviour
 
         voiceSource.PlayOneShot(clip);
     }
+    public AudioClip ObtenerVoiceHintActual()
+    {
+        string escena = SceneManager.GetActiveScene().name;
+
+        return escena switch
+        {
+            "Casa" => voiceHintSampleScene,
+            "MainMenu" => voiceHintIntro,
+            "Escuela" => voiceHintEscuela,
+            "Parque" => kioskoTutorialVoice,
+            _ => null
+        };
+    }
+
 }
