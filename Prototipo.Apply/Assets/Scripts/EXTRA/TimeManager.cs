@@ -32,6 +32,7 @@ public class TimerManager : MonoBehaviour
         {
             tiempoFinalizado = true;
             DetenerTodo();
+            Time.timeScale = 0f; 
         }
     }
 
@@ -40,6 +41,10 @@ public class TimerManager : MonoBehaviour
         // Mostrar UI de victoria
         if (victoriaUI != null)
             victoriaUI.SetActive(true);
+
+        PlayerDisparo disparo = FindObjectOfType<PlayerDisparo>();
+        if (disparo != null)
+            disparo.enabled = false;
 
         // Detener todos los enemigos
         Enemigo[] enemigos = FindObjectsOfType<Enemigo>();
