@@ -5,7 +5,7 @@ public class Bala : MonoBehaviour
     public float velocidad = 10f;
     private Vector2 direccion;
 
-    // Inicializa la bala con la dirección en la que disparar
+    // Inicializa la bala con la direcciï¿½n en la que disparar
     public void Inicializar(Vector2 dir)
     {
         direccion = dir.normalized;
@@ -14,7 +14,7 @@ public class Bala : MonoBehaviour
 
     private void Update()
     {
-        // Movimiento en línea recta en 2D usando solo x e y
+        // Movimiento en lï¿½nea recta en 2D usando solo x e y
         transform.Translate(direccion * velocidad * Time.deltaTime);
     }
 
@@ -29,7 +29,7 @@ public class Bala : MonoBehaviour
             }
             Destroy(gameObject);  // Destruye la bala al impactar
         }
-        else if (other.CompareTag("Pared")) // O cualquier obstáculo
+        else if (other.CompareTag("Pared")) // O cualquier obstï¿½culo
         {
             Destroy(gameObject);
         }

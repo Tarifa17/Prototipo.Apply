@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public static event System.Action OnJugadorMuerto;
 
 
-    [SerializeField] private Slider barraVida;  // Arrastrar el slider de la UI aquí
+    [SerializeField] private Slider barraVida;  // Arrastrar el slider de la UI aquï¿½
 
     private void Start()
     {
@@ -16,8 +16,8 @@ public class PlayerHealth : MonoBehaviour
         ActualizarBarraVida();
     }
 
-    // Método para recibir daño
-    public void RecibirDaño(int cantidad)
+    // Mï¿½todo para recibir daï¿½o
+    public void RecibirDanio(int cantidad)
     {
         vidaActual -= cantidad;
         vidaActual = Mathf.Clamp(vidaActual, 0, maxVida);
@@ -39,8 +39,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void Morir()
     {
-        Debug.Log("Jugador murió");
+        Debug.Log("Jugador muriï¿½");
         OnJugadorMuerto?.Invoke();
-        // Aquí poné la lógica de game over, reiniciar nivel, etc.
+        // Aquï¿½ ponï¿½ la lï¿½gica de game over, reiniciar nivel, etc.
     }
 }

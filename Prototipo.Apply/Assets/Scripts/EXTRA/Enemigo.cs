@@ -79,7 +79,7 @@ public class Enemigo : MonoBehaviour
             PlayerHealth ph = collision.gameObject.GetComponent<PlayerHealth>();
             if (ph != null)
             {
-                ph.RecibirDaño(10);
+                ph.RecibirDanio(10);
             }
         }
     }
