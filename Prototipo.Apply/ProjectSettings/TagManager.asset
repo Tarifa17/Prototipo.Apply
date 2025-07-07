@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Objetos
   - Contenedores
+  - Enemigo
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obstaculo
   - Water
   - UI
   - 

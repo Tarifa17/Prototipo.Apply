@@ -1289,6 +1289,10 @@ PrefabInstance:
       propertyPath: voiceHintParque
       value: 
       objectReference: {fileID: 8300000, guid: eec4dbff7f7a4d04b9f85563d62b8fb0, type: 3}
+    - target: {fileID: 6808631666912829803, guid: e255891571aa4c7459453a8ef7197727, type: 3}
+      propertyPath: backgroundMusicExtra
+      value: 
+      objectReference: {fileID: 8300000, guid: 48d2a74341347ae42aa72417e8eeb0d9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

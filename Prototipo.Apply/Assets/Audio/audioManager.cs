@@ -18,7 +18,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip backgroundMusicIntro;
     [SerializeField] private AudioClip backgroundMusicEscuela;
     [SerializeField] private AudioClip backgroundMusicParque;
-    [SerializeField] private AudioClip backgroundMusicKiosko; // Nueva
+    [SerializeField] private AudioClip backgroundMusicKiosko;
+    [SerializeField] private AudioClip backgroundMusicExtra;
 
     [Header("Voice Hints por Escena")]
     [SerializeField] private AudioClip voiceHintSampleScene;
@@ -101,6 +102,7 @@ public class AudioManager : MonoBehaviour
             "MainMenu" => backgroundMusicIntro,
             "Escuela" or "Minijuego" => backgroundMusicEscuela,
             "Parque" => backgroundMusicParque,
+            "Extra" => backgroundMusicExtra,
             _ => null
         };
 
@@ -109,6 +111,7 @@ public class AudioManager : MonoBehaviour
             musicSource.Stop();
             musicSource.clip = nuevaMusica;
             musicSource.volume = nombreEscena == "SampleScene" ? 1.0f : 0.4f;
+            musicSource.volume = nombreEscena == "Extra" ? 0.5f : 0.4f;
             musicSource.Play();
         }
     }
@@ -126,11 +129,6 @@ public class AudioManager : MonoBehaviour
 
         if (voiceHint != null)
             StartCoroutine(FadeOutMusicAndPlayHint(voiceHint));
-    }
-    private IEnumerator ReproducirVoiceHintSeguro(AudioClip clip)
-    {
-        yield return new WaitForSeconds(0.1f);
-        yield return StartCoroutine(FadeOutMusicAndPlayHint(clip));
     }
 
     public void PlayGrabSound() => sfxSource.PlayOneShot(grabSound);
